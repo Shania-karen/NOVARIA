@@ -35,7 +35,7 @@
 </header>
 
 <!-- Section hero avec les étapes de navigation -->
-<section class="hero">
+<section class="hero reveal">
   <h1>Comment S'inscrire ?</h1>
   <p>Tout ce que vous devez savoir pour rejoindre IT University</p>
   
@@ -370,6 +370,24 @@
       step.classList.add('active');
     });
   });
+
+  // Reveal on scroll for elements with .reveal
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && reveals.length) {
+    const obs = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(r => obs.observe(r));
+  } else {
+    // Fallback: show all
+    reveals.forEach(r => r.classList.add('visible'));
+  }
 </script>
 
 </body>
