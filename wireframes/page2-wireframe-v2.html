@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page 2 - Wireframe</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
+      padding: 40px;
+      min-height: 100vh;
+    }
+    
+    .wireframe-container {
+      max-width: 380px;
+      margin: 0 auto;
+      background: #2a2a2a;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    
+    /* Page Label */
+    .page-label {
+      background: #444;
+      color: #aaa;
+      text-align: center;
+      padding: 8px;
+      font-size: 12px;
+    }
+    
+    /* Header */
+    .wf-header {
+      background: #666;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .wf-logo {
+      width: 80px;
+      height: 25px;
+      background: #888;
+      border-radius: 4px;
+    }
+    
+    .wf-nav {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .wf-nav-item {
+      width: 40px;
+      height: 8px;
+      background: #888;
+      border-radius: 2px;
+    }
+    
+    .wf-menu-icon {
+      width: 25px;
+      height: 20px;
+      background: #888;
+      border-radius: 3px;
+    }
+    
+    /* Hero */
+    .wf-hero {
+      background: #555;
+      padding: 40px 25px;
+      text-align: center;
+    }
+    
+    .wf-breadcrumb {
+      width: 150px;
+      height: 8px;
+      background: #777;
+      border-radius: 2px;
+      margin: 0 auto 20px;
+    }
+    
+    .wf-title {
+      width: 250px;
+      height: 20px;
+      background: #888;
+      border-radius: 4px;
+      margin: 0 auto 15px;
+    }
+    
+    .wf-subtitle {
+      width: 200px;
+      height: 10px;
+      background: #666;
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+    
+    /* Steps indicator */
+    .wf-steps {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 25px;
+    }
+    
+    .wf-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .wf-step-dot {
+      width: 20px;
+      height: 20px;
+      background: #888;
+      border-radius: 50%;
+    }
+    
+    .wf-step-line {
+      width: 50px;
+      height: 3px;
+      background: #666;
+      border-radius: 2px;
+    }
+    
+    /* Main Content */
+    .wf-main {
+      background: #e8e8e8;
+      padding: 30px 20px;
+    }
+    
+    /* Section */
+    .wf-section {
+      margin-bottom: 35px;
+    }
+    
+    .wf-section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .wf-section-icon {
+      width: 35px;
+      height: 35px;
+      background: #666;
+      border-radius: 8px;
+    }
+    
+    .wf-section-title {
+      width: 120px;
+      height: 14px;
+      background: #888;
+      border-radius: 3px;
+    }
+    
+    /* Cards Grid */
+    .wf-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    
+    .wf-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    
+    .wf-card-icon {
+      width: 30px;
+      height: 30px;
+      background: #ccc;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    
+    .wf-card-title {
+      width: 80%;
+      height: 10px;
+      background: #999;
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+    
+    .wf-card-text {
+      width: 100%;
+      height: 6px;
+      background: #ddd;
+      border-radius: 2px;
+      margin-bottom: 5px;
+    }
+    
+    .wf-card-text.short {
+      width: 60%;
+    }
+    
+    /* Branch Style Section */
+    .wf-branch-section {
+      margin-bottom: 35px;
+      padding-left: 15px;
+      border-left: 3px solid #aaa;
+    }
+    
+    .wf-branch-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      margin-left: -15px;
+      padding-left: 12px;
+    }
+    
+    .wf-branch-dot {
+      width: 12px;
+      height: 12px;
+      background: #888;
+      border-radius: 50%;
+      margin-left: -21px;
+    }
+    
+    /* Branch Items */
+    .wf-branch-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 12px;
+      margin-left: 10px;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    
+    .wf-branch-item::before {
+      content: '';
+      position: absolute;
+      left: -23px;
+      top: 20px;
+      width: 20px;
+      height: 2px;
+      background: #bbb;
+    }
+    
+    .wf-branch-item-title {
+      width: 70%;
+      height: 10px;
+      background: #888;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+    
+    .wf-branch-item-text {
+      width: 100%;
+      height: 6px;
+      background: #ddd;
+      border-radius: 2px;
+      margin-bottom: 5px;
+    }
+    
+    .wf-branch-item-text.medium {
+      width: 80%;
+    }
+    
+    /* Sub Branch */
+    .wf-sub-branch {
+      margin-left: 20px;
+      padding-left: 12px;
+      border-left: 2px solid #ccc;
+      margin-top: 15px;
+    }
+    
+    .wf-sub-branch-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      margin-left: -12px;
+    }
+    
+    .wf-sub-branch-dot {
+      width: 8px;
+      height: 8px;
+      background: #999;
+      border-radius: 50%;
+      margin-left: -17px;
+    }
+    
+    .wf-sub-branch-title {
+      width: 60px;
+      height: 8px;
+      background: #999;
+      border-radius: 2px;
+    }
+    
+    /* Highlight Box */
+    .wf-highlight {
+      background: #555;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .wf-highlight-title {
+      width: 100px;
+      height: 10px;
+      background: #888;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+    
+    .wf-highlight-text {
+      width: 80%;
+      height: 8px;
+      background: #777;
+      border-radius: 2px;
+    }
+    
+    /* List Items */
+    .wf-list {
+      margin: 10px 0;
+    }
+    
+    .wf-list-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    
+    .wf-list-bullet {
+      width: 6px;
+      height: 6px;
+      background: #aaa;
+      border-radius: 50%;
+    }
+    
+    .wf-list-text {
+      width: 150px;
+      height: 6px;
+      background: #ccc;
+      border-radius: 2px;
+    }
+    
+    /* Button */
+    .wf-button {
+      display: inline-block;
+      width: 80px;
+      height: 28px;
+      background: #999;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+    
+    .wf-button.outline {
+      background: transparent;
+      border: 2px solid #999;
+    }
+    
+    /* CTA Section */
+    .wf-cta {
+      background: #666;
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .wf-cta-title {
+      width: 180px;
+      height: 14px;
+      background: #888;
+      border-radius: 3px;
+      margin: 0 auto 12px;
+    }
+    
+    .wf-cta-text {
+      width: 140px;
+      height: 8px;
+      background: #777;
+      border-radius: 2px;
+      margin: 0 auto 20px;
+    }
+    
+    .wf-cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .wf-cta-btn {
+      width: 90px;
+      height: 35px;
+      background: #888;
+      border-radius: 20px;
+    }
+    
+    .wf-cta-btn.outline {
+      background: transparent;
+      border: 2px solid #888;
+    }
+    
+    /* Footer */
+    .wf-footer {
+      background: #555;
+      padding: 25px 20px;
+    }
+    
+    .wf-footer-links {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+    }
+    
+    .wf-footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .wf-footer-link {
+      width: 50px;
+      height: 6px;
+      background: #777;
+      border-radius: 2px;
+    }
+    
+    .wf-footer-copyright {
+      background: #444;
+      padding: 12px;
+      margin: 15px -20px -25px;
+    }
+    
+    .wf-footer-copyright-text {
+      width: 120px;
+      height: 6px;
+      background: #666;
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wireframe-container">
+  <!-- Page Label -->
+  <div class="page-label">Page 2</div>
+  
+  <!-- Header -->
+  <div class="wf-header">
+    <div class="wf-logo"></div>
+    <div class="wf-nav">
+      <div class="wf-nav-item"></div>
+      <div class="wf-nav-item"></div>
+      <div class="wf-nav-item"></div>
+      <div class="wf-nav-item"></div>
+    </div>
+    <div class="wf-menu-icon"></div>
+  </div>
+  
+  <!-- Hero -->
+  <div class="wf-hero">
+    <div class="wf-breadcrumb"></div>
+    <div class="wf-title"></div>
+    <div class="wf-subtitle"></div>
+    
+    <!-- Steps: Dossier - Date - Options -->
+    <div class="wf-steps">
+      <div class="wf-step">
+        <div class="wf-step-dot"></div>
+      </div>
+      <div class="wf-step-line"></div>
+      <div class="wf-step">
+        <div class="wf-step-dot"></div>
+      </div>
+      <div class="wf-step-line"></div>
+      <div class="wf-step">
+        <div class="wf-step-dot"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="wf-main">
+    
+    <!-- SECTION 1: Dossier à fournir -->
+    <div class="wf-section">
+      <div class="wf-section-header">
+        <div class="wf-section-icon"></div>
+        <div class="wf-section-title"></div>
+      </div>
+      
+      <!-- Cards: Comment étudier + Dossiers -->
+      <div class="wf-cards-grid">
+        <div class="wf-card">
+          <div class="wf-card-icon"></div>
+          <div class="wf-card-title"></div>
+          <div class="wf-card-text"></div>
+          <div class="wf-card-text short"></div>
+        </div>
+        <div class="wf-card">
+          <div class="wf-card-icon"></div>
+          <div class="wf-card-title"></div>
+          <div class="wf-card-text"></div>
+          <div class="wf-card-text short"></div>
+        </div>
+        <div class="wf-card">
+          <div class="wf-card-icon"></div>
+          <div class="wf-card-title"></div>
+          <div class="wf-card-text"></div>
+          <div class="wf-card-text short"></div>
+        </div>
+        <div class="wf-card">
+          <div class="wf-card-icon"></div>
+          <div class="wf-card-title"></div>
+          <div class="wf-card-text"></div>
+          <div class="wf-card-text short"></div>
+        </div>
+        <div class="wf-card">
+          <div class="wf-card-icon"></div>
+          <div class="wf-card-title"></div>
+          <div class="wf-card-text"></div>
+          <div class="wf-card-text short"></div>
+        </div>
+        <div class="wf-card">
+          <div class="wf-card-icon"></div>
+          <div class="wf-card-title"></div>
+          <div class="wf-card-text"></div>
+          <div class="wf-card-text short"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SECTION 2: Date (Branch Style) -->
+    <div class="wf-section">
+      <div class="wf-section-header">
+        <div class="wf-section-icon"></div>
+        <div class="wf-section-title"></div>
+      </div>
+      
+      <div class="wf-branch-section">
+        <!-- Date limite -->
+        <div class="wf-branch-header">
+          <div class="wf-branch-dot"></div>
+          <div class="wf-section-title" style="width:100px;"></div>
+        </div>
+        <div class="wf-branch-item">
+          <div class="wf-branch-item-title"></div>
+          <div class="wf-branch-item-text"></div>
+          <div class="wf-branch-item-text medium"></div>
+        </div>
+        
+        <!-- Liste admis -->
+        <div class="wf-branch-header" style="margin-top:20px;">
+          <div class="wf-branch-dot"></div>
+          <div class="wf-section-title" style="width:80px;"></div>
+        </div>
+        <div class="wf-branch-item">
+          <div class="wf-branch-item-title"></div>
+          <div class="wf-branch-item-text"></div>
+          <div class="wf-branch-item-text medium"></div>
+        </div>
+        
+        <!-- Another item -->
+        <div class="wf-branch-header" style="margin-top:20px;">
+          <div class="wf-branch-dot"></div>
+          <div class="wf-section-title" style="width:90px;"></div>
+        </div>
+        <div class="wf-branch-item">
+          <div class="wf-branch-item-title"></div>
+          <div class="wf-branch-item-text"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SECTION 3: Options -->
+    <div class="wf-section">
+      <div class="wf-section-header">
+        <div class="wf-section-icon"></div>
+        <div class="wf-section-title"></div>
+      </div>
+      
+      <!-- Highlight: Rentrée -->
+      <div class="wf-highlight">
+        <div class="wf-highlight-title"></div>
+        <div class="wf-highlight-text"></div>
+      </div>
+      
+      <!-- Sub items -->
+      <div class="wf-card" style="margin-bottom:15px;">
+        <div class="wf-branch-item-title"></div>
+        <div class="wf-list">
+          <div class="wf-list-item">
+            <div class="wf-list-bullet"></div>
+            <div class="wf-list-text"></div>
+          </div>
+          <div class="wf-list-item">
+            <div class="wf-list-bullet"></div>
+            <div class="wf-list-text"></div>
+          </div>
+          <div class="wf-list-item">
+            <div class="wf-list-bullet"></div>
+            <div class="wf-list-text"></div>
+          </div>
+        </div>
+        <div class="wf-button outline"></div>
+      </div>
+      
+      <!-- Détails card -->
+      <div class="wf-highlight">
+        <div class="wf-highlight-title"></div>
+        <div class="wf-highlight-text"></div>
+        <div class="wf-highlight-text" style="width:60%; margin-top:8px;"></div>
+      </div>
+      
+      <div class="wf-card">
+        <div class="wf-branch-item-title"></div>
+        <div class="wf-list">
+          <div class="wf-list-item">
+            <div class="wf-list-bullet"></div>
+            <div class="wf-list-text"></div>
+          </div>
+          <div class="wf-list-item">
+            <div class="wf-list-bullet"></div>
+            <div class="wf-list-text"></div>
+          </div>
+          <div class="wf-list-item">
+            <div class="wf-list-bullet"></div>
+            <div class="wf-list-text"></div>
+          </div>
+        </div>
+        <div class="wf-button"></div>
+      </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="wf-cta">
+      <div class="wf-cta-title"></div>
+      <div class="wf-cta-text"></div>
+      <div class="wf-cta-buttons">
+        <div class="wf-cta-btn"></div>
+        <div class="wf-cta-btn outline"></div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Footer -->
+  <div class="wf-footer">
+    <div class="wf-footer-links">
+      <div class="wf-footer-col">
+        <div class="wf-footer-link"></div>
+        <div class="wf-footer-link"></div>
+        <div class="wf-footer-link"></div>
+      </div>
+      <div class="wf-footer-col">
+        <div class="wf-footer-link"></div>
+        <div class="wf-footer-link"></div>
+        <div class="wf-footer-link"></div>
+      </div>
+      <div class="wf-footer-col">
+        <div class="wf-footer-link"></div>
+        <div class="wf-footer-link"></div>
+        <div class="wf-footer-link"></div>
+      </div>
+      <div class="wf-footer-col">
+        <div class="wf-footer-link"></div>
+        <div class="wf-footer-link"></div>
+        <div class="wf-footer-link"></div>
+      </div>
+    </div>
+    <div class="wf-footer-copyright">
+      <div class="wf-footer-copyright-text"></div>
+    </div>
+  </div>
+  
+</div>
+
+</body>
+</html>

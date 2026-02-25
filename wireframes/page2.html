@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #2a2a2a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .wireframe-container {
+            width: 375px;
+            background: #ffffff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        /* ========== BLOCKS STYLES ========== */
+        .block-dark {
+            background: #6b6b6b;
+        }
+
+        .block-medium {
+            background: #9a9a9a;
+        }
+
+        .block-light {
+            background: #c4c4c4;
+        }
+
+        .block-lighter {
+            background: #e0e0e0;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: #6b6b6b;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 20px;
+            background: #9a9a9a;
+            border-radius: 2px;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-item {
+            width: 40px;
+            height: 8px;
+            background: #9a9a9a;
+            border-radius: 2px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: #e0e0e0;
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        .hero-title {
+            width: 70%;
+            height: 16px;
+            background: #9a9a9a;
+            margin: 0 auto 12px;
+            border-radius: 2px;
+        }
+
+        .hero-subtitle {
+            width: 90%;
+            height: 8px;
+            background: #c4c4c4;
+            margin: 0 auto 6px;
+            border-radius: 2px;
+        }
+
+        /* ========== STEPS INDICATOR ========== */
+        .steps {
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f5f5f5;
+        }
+
+        .step-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #c4c4c4;
+        }
+
+        .step-circle.active {
+            background: #6b6b6b;
+        }
+
+        .step-line {
+            flex: 1;
+            height: 3px;
+            background: #e0e0e0;
+            margin: 0 8px;
+        }
+
+        /* ========== SECTION ========== */
+        .section {
+            padding: 20px 16px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            background: #6b6b6b;
+            border-radius: 6px;
+        }
+
+        .section-title {
+            flex: 1;
+        }
+
+        .section-title .title-bar {
+            width: 120px;
+            height: 12px;
+            background: #6b6b6b;
+            border-radius: 2px;
+            margin-bottom: 6px;
+        }
+
+        .section-title .subtitle-bar {
+            width: 80px;
+            height: 6px;
+            background: #c4c4c4;
+            border-radius: 2px;
+        }
+
+        /* ========== CARDS GRID ========== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .card-icon {
+            width: 24px;
+            height: 24px;
+            background: #c4c4c4;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            width: 80%;
+            height: 8px;
+            background: #9a9a9a;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            width: 100%;
+            height: 5px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            margin-bottom: 4px;
+        }
+
+        .card-tag {
+            width: 50px;
+            height: 12px;
+            background: #c4c4c4;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        /* ========== TIMELINE ========== */
+        .timeline {
+            padding-left: 20px;
+            border-left: 3px solid #9a9a9a;
+            margin-left: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 12px 0;
+            padding-left: 16px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 16px;
+            width: 12px;
+            height: 12px;
+            background: #6b6b6b;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .timeline-date {
+            width: 80px;
+            height: 14px;
+            background: #6b6b6b;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            width: 140px;
+            height: 10px;
+            background: #9a9a9a;
+            border-radius: 2px;
+            margin-bottom: 6px;
+        }
+
+        .timeline-text {
+            width: 100%;
+            height: 5px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            margin-bottom: 3px;
+        }
+
+        /* ========== OPTIONS CARDS ========== */
+        .option-card {
+            background: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .option-image {
+            width: 100%;
+            height: 100px;
+            background: #c4c4c4;
+        }
+
+        .option-content {
+            padding: 16px;
+        }
+
+        .option-tag {
+            width: 70px;
+            height: 14px;
+            background: #9a9a9a;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .option-title {
+            width: 60%;
+            height: 12px;
+            background: #6b6b6b;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+
+        .option-list {
+            margin-bottom: 12px;
+        }
+
+        .option-list-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .option-check {
+            width: 8px;
+            height: 8px;
+            background: #9a9a9a;
+            border-radius: 2px;
+        }
+
+        .option-list-text {
+            width: 80%;
+            height: 5px;
+            background: #d0d0d0;
+            border-radius: 2px;
+        }
+
+        .option-btn {
+            width: 100px;
+            height: 28px;
+            background: #6b6b6b;
+            border-radius: 14px;
+        }
+
+        .option-btn.outline {
+            background: transparent;
+            border: 2px solid #9a9a9a;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta {
+            background: #6b6b6b;
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        .cta-title {
+            width: 70%;
+            height: 14px;
+            background: #9a9a9a;
+            margin: 0 auto 10px;
+            border-radius: 2px;
+        }
+
+        .cta-text {
+            width: 50%;
+            height: 6px;
+            background: #8a8a8a;
+            margin: 0 auto 16px;
+            border-radius: 2px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .cta-btn {
+            width: 100px;
+            height: 32px;
+            background: #e0e0e0;
+            border-radius: 16px;
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 2px solid #9a9a9a;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #4a4a4a;
+            padding: 20px 16px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .footer-col-title {
+            width: 50px;
+            height: 8px;
+            background: #7a7a7a;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+
+        .footer-link {
+            width: 70%;
+            height: 5px;
+            background: #6a6a6a;
+            border-radius: 2px;
+            margin-bottom: 6px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #5a5a5a;
+            padding-top: 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-copyright {
+            width: 150px;
+            height: 6px;
+            background: #5a5a5a;
+            border-radius: 2px;
+        }
+
+        /* ========== PAGE LABEL ========== */
+        .page-label {
+            text-align: center;
+            padding: 10px;
+            background: #1a1a1a;
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* ========== DIVIDER ========== */
+        .divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 0 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wireframe-container">
+        
+        <!-- PAGE LABEL -->
+        <div class="page-label">Page 2 </div>
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo"></div>
+            <div class="nav-items">
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item" style="width: 50px; background: #e0e0e0;"></div>
+            </div>
+        </div>
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-title"></div>
+            <div class="hero-subtitle"></div>
+            <div class="hero-subtitle" style="width: 70%;"></div>
+        </div>
+
+        <!-- STEPS INDICATOR -->
+        <div class="steps">
+            <div class="step-circle active"></div>
+            <div class="step-line"></div>
+            <div class="step-circle"></div>
+            <div class="step-line"></div>
+            <div class="step-circle"></div>
+            <div class="step-line"></div>
+            <div class="step-circle"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- SECTION 1: DOSSIER À FOURNIR -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon"></div>
+                <div class="section-title">
+                    <div class="title-bar"></div>
+                    <div class="subtitle-bar"></div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <div class="card-title"></div>
+                    <div class="card-text"></div>
+                    <div class="card-text" style="width: 70%;"></div>
+                    <div class="card-tag"></div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <div class="card-title"></div>
+                    <div class="card-text"></div>
+                    <div class="card-text" style="width: 70%;"></div>
+                    <div class="card-tag"></div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <div class="card-title"></div>
+                    <div class="card-text"></div>
+                    <div class="card-text" style="width: 70%;"></div>
+                    <div class="card-tag"></div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <div class="card-title"></div>
+                    <div class="card-text"></div>
+                    <div class="card-text" style="width: 70%;"></div>
+                    <div class="card-tag"></div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <div class="card-title"></div>
+                    <div class="card-text"></div>
+                    <div class="card-text" style="width: 70%;"></div>
+                    <div class="card-tag" style="background: #e8e8e8;"></div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <div class="card-title"></div>
+                    <div class="card-text"></div>
+                    <div class="card-text" style="width: 70%;"></div>
+                    <div class="card-tag" style="background: #e8e8e8;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- SECTION 2: DATES -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon"></div>
+                <div class="section-title">
+                    <div class="title-bar" style="width: 100px;"></div>
+                    <div class="subtitle-bar"></div>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date"></div>
+                    <div class="timeline-title"></div>
+                    <div class="timeline-text"></div>
+                    <div class="timeline-text" style="width: 80%;"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date"></div>
+                    <div class="timeline-title"></div>
+                    <div class="timeline-text"></div>
+                    <div class="timeline-text" style="width: 80%;"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date"></div>
+                    <div class="timeline-title"></div>
+                    <div class="timeline-text"></div>
+                    <div class="timeline-text" style="width: 80%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- SECTION 3: OPTIONS -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon"></div>
+                <div class="section-title">
+                    <div class="title-bar" style="width: 80px;"></div>
+                    <div class="subtitle-bar"></div>
+                </div>
+            </div>
+
+            <div class="option-card">
+                <div class="option-image"></div>
+                <div class="option-content">
+                    <div class="option-tag"></div>
+                    <div class="option-title"></div>
+                    <div class="option-list">
+                        <div class="option-list-item">
+                            <div class="option-check"></div>
+                            <div class="option-list-text"></div>
+                        </div>
+                        <div class="option-list-item">
+                            <div class="option-check"></div>
+                            <div class="option-list-text"></div>
+                        </div>
+                        <div class="option-list-item">
+                            <div class="option-check"></div>
+                            <div class="option-list-text"></div>
+                        </div>
+                    </div>
+                    <div class="option-btn"></div>
+                </div>
+            </div>
+
+            <div class="option-card">
+                <div class="option-image"></div>
+                <div class="option-content">
+                    <div class="option-tag"></div>
+                    <div class="option-title"></div>
+                    <div class="option-list">
+                        <div class="option-list-item">
+                            <div class="option-check"></div>
+                            <div class="option-list-text"></div>
+                        </div>
+                        <div class="option-list-item">
+                            <div class="option-check"></div>
+                            <div class="option-list-text"></div>
+                        </div>
+                        <div class="option-list-item">
+                            <div class="option-check"></div>
+                            <div class="option-list-text"></div>
+                        </div>
+                    </div>
+                    <div class="option-btn outline"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+            <div class="cta-title"></div>
+            <div class="cta-text"></div>
+            <div class="cta-buttons">
+                <div class="cta-btn"></div>
+                <div class="cta-btn secondary"></div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-col-title"></div>
+                    <div class="footer-link"></div>
+                    <div class="footer-link"></div>
+                    <div class="footer-link"></div>
+                </div>
+                <div>
+                    <div class="footer-col-title"></div>
+                    <div class="footer-link"></div>
+                    <div class="footer-link"></div>
+                    <div class="footer-link"></div>
+                </div>
+                <div>
+                    <div class="footer-col-title"></div>
+                    <div class="footer-link"></div>
+                    <div class="footer-link"></div>
+                    <div class="footer-link"></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright"></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
