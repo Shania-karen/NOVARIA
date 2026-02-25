@@ -40,8 +40,70 @@
   </div>
 </header>
 
-<!-- CONTENU TEMPORAIRE -->
-<main style="height:1000px;"></main>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="assets/images/itUniversity.jpg" alt="Campus ITU"/>
+  <div class="hero-overlay">
+   <a href="#" class="btn-hero">Comment S'inscrire ?</a>
+  </div>
+</section>
+
+<!-- ABOUT BAND -->
+<div class="about-band">
+  <div class="logo-sm">
+        <img src="assets/icons/logo.png" alt="ITU Logo"/>
+  </div>
+  <p>Licence &amp; Master en Informatique</p>
+  <a href="#">About ITU</a>
+</div>
+
+<!-- OPTIONS -->
+<section class="options-section">
+  <h2>OPTIONS</h2>
+  <div class="options-grid">
+    <!-- Licence block -->
+    <div class="option-block">
+      <div class="option-courses">
+        <div class="option-course-btn">Développement</div>
+        <div class="option-course-btn">Web et Design</div>
+        <div class="option-course-btn">Réseau et Base de Données</div>
+      </div>
+    </div>
+    <div class="option-block">
+      <div class="option-dates">
+        <div class="date-box">
+          <div class="label">Date limite de dépôt :</div>
+          <div class="date">27 sept 2027</div>
+        </div>
+        <div class="date-box">
+          <div class="label">Rentrée :</div>
+          <div class="date">17 Octobre 2027</div>
+        </div>
+      </div>
+    </div>
+    <!-- Master block -->
+    <div class="option-block green">
+      <div class="option-courses">
+        <div class="option-course-btn">Design et Communication Digital</div>
+        <div class="option-course-btn">Content management et digital marketing</div>
+      </div>
+    </div>
+    <div class="option-block green">
+      <div class="option-dates">
+        <div class="date-box">
+          <div class="label">Date limite de dépôt :</div>
+          <div class="date">27 sept 2027</div>
+        </div>
+        <div class="date-box">
+          <div class="label">Rentrée :</div>
+          <div class="date">17 Octobre 2027</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#" class="btn-more">Plus d'informations</a>
+</section>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -70,17 +132,17 @@
   });
 
   const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
+const html = document.documentElement;
 const iconSun = document.getElementById('icon-sun');
 const iconMoon = document.getElementById('icon-moon');
 
 function applyTheme(theme){
   if(theme === 'dark'){
-    body.classList.add('dark-mode');
+    html.classList.add('dark');
     iconSun.style.display = 'none';
     iconMoon.style.display = 'block';
   } else {
-    body.classList.remove('dark-mode');
+    html.classList.remove('dark');
     iconSun.style.display = 'block';
     iconMoon.style.display = 'none';
   }
@@ -90,7 +152,7 @@ function applyTheme(theme){
 applyTheme(localStorage.getItem('theme') || 'light');
 
 themeToggle.addEventListener('click', () => {
-  if(body.classList.contains('dark-mode')){
+  if(html.classList.contains('dark')){
     applyTheme('light');
     localStorage.setItem('theme','light');
   } else {
