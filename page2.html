@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment S'inscrire - ITUniversity</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/page2.css">
+</head>
+<body>
+
+<!-- HEADER (unchanged) -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="assets/icons/logo.png" alt="ITU Logo">
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="#">Licence</a>
+      <a href="#">Master</a>
+      <a href="#">Campus Life</a>
+      <a href="#">Simulation</a>
+      <a href="#">Contact Us</a>
+    </nav>
+    <div class="right-actions">
+      <button id="theme-toggle" class="theme-toggle">
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 4.75V2M12 22v-2.75M4.75 12H2M22 12h-2.75M5.64 5.64l-1.95-1.95M20.31 20.31l-1.95-1.95M5.64 18.36l-1.95 1.95M20.31 3.69l-1.95 1.95M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+        </svg>
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
+        </svg>
+      </button>
+      <div class="menu-toggle">☰</div>
+    </div>
+  </div>
+</header>
+
+<!-- Section hero avec les étapes de navigation -->
+<section class="hero">
+  <h1>Comment S'inscrire ?</h1>
+  <p>Tout ce que vous devez savoir pour rejoindre IT University</p>
+  
+  <!-- Les 3 étapes cliquables -->
+  <div class="steps-indicator">
+    <a href="#dossier" class="step active">
+      <span class="step-dot">📁</span>
+      <span class="step-label">Dossier</span>
+    </a>
+    <div class="step-line"></div>
+    <a href="#date" class="step">
+      <span class="step-dot">📅</span>
+      <span class="step-label">Date</span>
+    </a>
+    <div class="step-line"></div>
+    <a href="#options" class="step">
+      <span class="step-dot">🎯</span>
+      <span class="step-label">Options</span>
+    </a>
+  </div>
+</section>
+
+<!-- Contenu principal de la page -->
+<main class="main-content">
+
+  <!--  SECTION 1: DOSSIER À FOURNIR  -->
+  <section class="content-section" id="dossier">
+    <div class="section-header">
+      <span class="section-icon">📁</span>
+      <h2>Dossier à fournir</h2>
+    </div>
+    
+    <!-- Grille de 6 cartes pour les infos dossier -->
+    <div class="cards-grid">
+      <!-- Carte comment étudier -->
+      <div class="info-card">
+        <div class="card-icon">🎓</div>
+        <h3>Comment étudier ?</h3>
+        <p>Sélection de dossier</p>
+        <div class="card-details">
+          <strong>Bacc scientifique/technique :</strong>
+          <span class="tag green">Développement</span>
+          <span class="tag green">Web et Design</span>
+          <span class="tag green">Réseaux et base de données</span>
+        </div>
+      </div>
+      
+      <!-- Carte baccs acceptés -->
+      <div class="info-card">
+        <div class="card-icon">📚</div>
+        <h3>Toutes les séries</h3>
+        <p>Baccs acceptés</p>
+        <div class="card-details">
+          <span class="tag blue">Design et Commumication Digital</span>
+          <span class="tag blue">Content & Marketing</span>
+        </div>
+      </div>
+      
+      <!-- Carte formulaire en ligne -->
+      <div class="info-card">
+        <div class="card-icon">📝</div>
+        <h3>Formulaire</h3>
+        <p><a href="#" class="doc-link">Dépôt de dossier en ligne</a></p>
+      </div>
+      
+      <!-- Carte pièces d'identité -->
+      <div class="info-card">
+        <div class="card-icon">🪪</div>
+        <h3>Pièces d'identité</h3>
+        <p>Bulletin de naissance ou CIN + Certificat de résidence</p>
+      </div>
+      
+      <!-- Carte relevé de notes -->
+      <div class="info-card">
+        <div class="card-icon">📊</div>
+        <h3>Relevé de notes</h3>
+        <p>Bacc ou preuve de réussite + Notes terminales</p>
+      </div>
+      
+      <!-- Carte autres documents -->
+      <div class="info-card">
+        <div class="card-icon">📂</div>
+        <h3>Autres documents</h3>
+        <p>Lettre de motivation, 1 photo, Chemise cartonnée</p>
+      </div>
+    </div>
+    
+    <!-- Badges info et prix -->
+    <div class="info-row">
+      <div class="info-badge info">
+        <span>📌</span> Vous pouvez déposer sans attendre les résultats du Bacc
+      </div>
+      <div class="price-badge">
+        <span>💰</span> Frais de dossier : <strong>15 000 Ar</strong>
+      </div>
+    </div>
+  </section>
+
+  <!--  SECTION 2: DATE  -->
+  <section class="content-section" id="date">
+    <div class="section-header">
+      <span class="section-icon">📅</span>
+      <h2>Date</h2>
+    </div>
+    
+    <!-- Style timeline avec les branches -->
+    <div class="branch-container">
+      <!-- Branche date limite dépôt -->
+      <div class="branch-item">
+        <div class="branch-dot"></div>
+        <div class="branch-line"></div>
+        <div class="branch-card">
+          <h4>⏰ Date limite de dépôt</h4>
+          <div class="date-row">
+            <div class="date-box green">
+              <span class="date-num">23</span>
+              <span class="date-month">Sept</span>
+              <span class="date-time">12h</span>
+            </div>
+            <div class="date-info">
+              <p>Développement</p>
+              <p>Web et Design</p>
+              <p>Réseaux et BD</p>
+            </div>
+          </div>
+          <div class="date-row">
+            <div class="date-box blue">
+              <span class="date-num">26</span>
+              <span class="date-month">Sept</span>
+              <span class="date-time">12h</span>
+            </div>
+            <div class="date-info">
+              <p>Design et Comm. Digital</p>
+              <p>Content & Marketing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Branche liste des admis -->
+      <div class="branch-item">
+        <div class="branch-dot"></div>
+        <div class="branch-line"></div>
+        <div class="branch-card">
+          <h4>📋 Liste des admis</h4>
+          <p class="branch-text">Disponible sur ce site et au campus Andoharanofotsy</p>
+          <div class="date-row">
+            <div class="date-box green">
+              <span class="date-num">24</span>
+              <span class="date-month">Sept</span>
+              <span class="date-time">12h</span>
+            </div>
+            <div class="date-info">
+              <p>Dev, Web, Réseaux</p>
+            </div>
+          </div>
+          <div class="date-row">
+            <div class="date-box blue">
+              <span class="date-num">27</span>
+              <span class="date-month">Sept</span>
+              <span class="date-time">12h</span>
+            </div>
+            <div class="date-info">
+              <p>Design, Marketing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Branche bon à savoir -->
+      <div class="branch-item">
+        <div class="branch-dot"></div>
+        <div class="branch-card">
+          <h4>💡 Bon à savoir</h4>
+          <p class="branch-text">Pas de restriction sur l'année d'obtention du Bacc</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--  SECTION 3: OPTIONS  -->
+  <section class="content-section" id="options">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <h2>Options</h2>
+    </div>
+    
+    <!-- Box mise en avant pour la rentrée -->
+    <div class="highlight-box">
+      <div class="highlight-icon">🚀</div>
+      <div class="highlight-content">
+        <span class="highlight-label">Rentrée académique</span>
+        <span class="highlight-date">Mercredi 09 Octobre 2024</span>
+      </div>
+    </div>
+    
+    <div class="cards-grid two-cols">
+      <!-- Carte options techniques (vert) -->
+      <div class="info-card highlight-green">
+        <h4>Options Techniques</h4>
+        <ul class="option-list">
+          <li>🖥️ Développement</li>
+          <li>🎨 Web et Design</li>
+          <li>🌐 Réseaux et base de données</li>
+        </ul>
+      </div>
+      
+      <!-- Carte options créatives (bleu) -->
+      <div class="info-card highlight-blue">
+        <h4>Options Créatives</h4>
+        <ul class="option-list">
+          <li>📱 Design et communication digital</li>
+          <li>📢 Content management et digital marketing</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Box mise en avant pour les détails -->
+    <div class="highlight-box secondary">
+      <div class="highlight-icon">📋</div>
+      <div class="highlight-content">
+        <span class="highlight-label">Détails</span>
+        <span class="highlight-sub">Diplômes, Horaires, Localisation</span>
+      </div>
+    </div>
+    
+    <!-- Grande carte des diplômes -->
+    <div class="info-card full-width">
+      <h4>🎖️ Diplômes délivrés (Système LMD - 3 ans)</h4>
+      <div class="diplomas-list">
+        <span class="diploma-tag">💻 Licence Développement d'applications</span>
+        <span class="diploma-tag">🗄️ Licence Base de données et Réseaux</span>
+        <span class="diploma-tag">🎨 Licence Web Intégration et Web designer</span>
+        <span class="diploma-tag">✨ Licence Design et communication digital</span>
+        <span class="diploma-tag">📱 Licence Content management et digital marketing</span>
+      </div>
+      <div class="info-badge master">
+        <span>🎓</span> <strong>Master 2 MBDS</strong> (Nice / ESTIA)
+      </div>
+    </div>
+    
+    <!-- Deux petites cartes horaires et localisation -->
+    <div class="cards-grid two-cols">
+      <div class="info-card">
+        <h4>🕐 Horaires</h4>
+        <div class="schedule-display">
+          <span class="time">8h</span>
+          <span class="separator">→</span>
+          <span class="time">17h</span>
+        </div>
+        <p class="small-text">Avec pause midi</p>
+      </div>
+      
+      <div class="info-card">
+        <h4>📍 Localisation</h4>
+        <p><strong>Andoharanofotsy</strong></p>
+        <p class="small-text">Entre BNI et GALANA</p>
+        <a href="https://maps.app.goo.gl/7LMyT1Mq9JZx8YYg7" target="_blank" class="btn btn-small">🗺️ Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section appel à l'action -->
+  <section class="cta-section">
+    <h2>Prêt à rejoindre ITUniversity ?</h2>
+    <p>Déposez votre dossier dès maintenant</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-white">📝 Formulaire en ligne</a>
+      <a href="tel:0340530032" class="btn btn-ghost">📞 034 05 300 32</a>
+    </div>
+    <div class="contact-info">
+      <span>✉️ ituniversity@moov.mg</span>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER (unchanged) -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="assets/icons/logo.png" alt="ITU Logo">
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="#">Map & Directions</a>
+    <a href="#">Contact Info</a>
+    <a href="#">About ITU</a>
+  </div>
+  <p class="copyright">Copyright 2025-Novaria</p>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  toggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  const iconSun = document.getElementById('icon-sun');
+  const iconMoon = document.getElementById('icon-moon');
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      body.classList.add('dark-mode');
+      iconSun.style.display = 'none';
+      iconMoon.style.display = 'block';
+    } else {
+      body.classList.remove('dark-mode');
+      iconSun.style.display = 'block';
+      iconMoon.style.display = 'none';
+    }
+  }
+
+  applyTheme(localStorage.getItem('theme') || 'light');
+
+  themeToggle.addEventListener('click', () => {
+    if (body.classList.contains('dark-mode')) {
+      applyTheme('light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      applyTheme('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  // Smooth scroll for steps
+  document.querySelectorAll('.step').forEach(step => {
+    step.addEventListener('click', (e) => {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      step.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
