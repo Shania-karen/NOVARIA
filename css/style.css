@@ -45,6 +45,8 @@ body {
 
 .container {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 12px 20px;
   display: flex;
   justify-content: space-between;
@@ -153,8 +155,9 @@ body {
 
 /* Positionner le hero visuellement sous le header (overlay effect) */
 .hero {
-  margin-top: -70px; /* remonte pour être aligné haut sous le header fixe */
-  padding-top: 70px; /* compense le recouvrement pour le contenu interne */
+  margin-top: -35px; /* réduit le recouvrement sur desktop */
+  padding-top: 48px; /* compense le recouvrement pour le contenu interne */
+  padding-bottom: 48px;
 }
 
 @media (max-width: 768px) {
