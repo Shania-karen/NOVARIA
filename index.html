@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ITUniversity</title>
   <link rel="stylesheet" href="./css/style.css">
+  <!-- Font Awesome for theme icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -25,14 +27,10 @@
     </nav>
 
     <div class="right-actions">
-      <!-- Toggle Light/Dark Mode -->
-      <button id="theme-toggle" class="theme-toggle">
-        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 4.75V2M12 22v-2.75M4.75 12H2M22 12h-2.75M5.64 5.64l-1.95-1.95M20.31 20.31l-1.95-1.95M5.64 18.36l-1.95 1.95M20.31 3.69l-1.95 1.95M12 7a5 5 0 100 10 5 5 0 000-10z"/>
-        </svg>
-        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
-          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
-        </svg>
+      <!-- Toggle Light/Dark Mode using Font Awesome -->
+      <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Basculer thème clair/sombre">
+        <i id="icon-sun" class="fa-solid fa-sun" aria-hidden="true" title="mode clair"></i>
+        <i id="icon-moon" class="fa-solid fa-moon" aria-hidden="true" title="mode sombre" style="display:none;"></i>
       </button>
 
       <div class="menu-toggle">☰</div>
@@ -60,6 +58,9 @@
     Copyright 2025-Novaria
   </p>
 </footer>
+
+<!-- Page scripts -->
+<script src="./js/scroll-reveal.js" defer></script>
 
 <script>
   // Mobile menu toggle

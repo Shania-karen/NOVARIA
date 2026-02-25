@@ -1,0 +1,565 @@
+/* =====================================================
+   campus-life.css  — Page Campus Life
+   Dépend de style.css (--primary-blue, --accent-green…)
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --font-display : 'Syne', Arial, sans-serif;
+  --font-body    : 'DM Sans', Arial, sans-serif;
+  --blue-deep    : #1a2370;
+  --blue-mid     : #3a52c8;
+  --card-bg      : #ffffff;
+  --card-border  : rgba(47,62,158,0.11);
+  --row-bg       : #2F3E9E;
+  --row-bg-alt   : #1e2e85;
+  --shadow-sm    : 0 4px 24px rgba(47,62,158,0.13);
+  --shadow-md    : 0 14px 44px rgba(47,62,158,0.22);
+  --radius       : 14px;
+  --radius-sm    : 8px;
+  --trans        : 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+
+body.dark-mode {
+  --card-bg    : #111830;
+  --card-border: rgba(83,106,228,0.2);
+}
+
+/* Dark mode adjustments for event cards */
+body.dark-mode .cl-event-row {
+  background: #0b1220; /* deep card bg */
+  border-color: rgba(83,106,228,0.12);
+  box-shadow: none;
+  color: rgba(230,240,255,0.92);
+}
+body.dark-mode .cl-event-title,
+body.dark-mode .cl-event-desc {
+  color: rgba(230,240,255,0.95);
+}
+body.dark-mode .cl-meta-pill {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.04);
+  color: rgba(200,220,255,0.85);
+}
+body.dark-mode .cl-event-date {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.04);
+  color: rgba(200,220,255,0.85);
+}
+body.dark-mode .cl-meta-pill i { color: var(--accent-green); }
+
+/* Dark mode overrides for date text */
+body.dark-mode .cl-date-label { color: rgba(200,220,255,0.8); }
+body.dark-mode .cl-date-value { color: rgba(230,240,255,0.95); }
+
+body { font-family: var(--font-body); }
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.23,1,.32,1),
+              transform .7s cubic-bezier(.23,1,.32,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.rd1 { transition-delay: .08s; }
+.rd2 { transition-delay: .17s; }
+.rd3 { transition-delay: .26s; }
+.rd4 { transition-delay: .35s; }
+
+/* =====================================================
+   HERO SLIDER
+   Wireframe : image pleine + texte bas-gauche + 3 dots
+===================================================== */
+.cl-hero {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+}
+@media(max-width:600px){ .cl-hero{ height: 360px; } }
+
+/* chaque slide */
+.cl-slide {
+  position: absolute; inset: 0;
+  display: flex; align-items: flex-end;
+  padding: 0 28px 56px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.cl-slide.active { opacity: 1; z-index: 1; }
+
+/* overlay sombre dégradé */
+.cl-slide::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(8,12,26,.88)  0%,
+    rgba(26,35,112,.55) 45%,
+    transparent         100%
+  );
+  z-index: 0;
+}
+
+/* grille animée en fond */
+.cl-slide::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background-image:
+    linear-gradient(rgba(166,206,57,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166,206,57,.05) 1px, transparent 1px);
+  background-size: 52px 52px;
+  animation: gridDrift 22s linear infinite;
+}
+@keyframes gridDrift {
+  from { transform: perspective(600px) rotateX(8deg) translateY(0); }
+  to   { transform: perspective(600px) rotateX(8deg) translateY(52px); }
+}
+
+/* image de fond (parallax léger) */
+.cl-slide-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  /* keep a very subtle parallax/zoom but avoid over-zoom on small images */
+  transform: scale(1.02);
+  transition: transform 8s ease;
+}
+.cl-slide.active .cl-slide-bg { transform: scale(1); }
+
+/* contenu texte du slide */
+.cl-slide-content {
+  position: relative; z-index: 2;
+  max-width: 760px;
+}
+
+.cl-slide-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-green);
+  background: rgba(166,206,57,.12);
+  border: 1px solid rgba(166,206,57,.32);
+  padding: 4px 14px; border-radius: 30px;
+  margin-bottom: 14px;
+}
+
+.cl-slide-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4.0vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  color: #fff;
+  line-height: 1.08;
+  margin-bottom: 10px;
+  animation: slideUp .7s .2s both;
+  text-shadow: 0 10px 30px rgba(2,6,23,0.55);
+}
+.cl-slide-title span { color: var(--accent-green); }
+
+.cl-slide-sub {
+  font-size: .97rem;
+  color: rgba(200,220,255,.78);
+  line-height: 1.7;
+  max-width: 540px;
+  animation: slideUp .7s .38s both;
+  text-shadow: 0 6px 18px rgba(2,6,23,0.45);
+}
+
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* DOTS de pagination — wireframe : 3 cercles centrés */
+.cl-dots {
+  position: absolute;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex; gap: 10px; align-items: center;
+}
+
+.cl-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  border: none; cursor: pointer; padding: 0;
+  transition: all .35s;
+}
+.cl-dot.active {
+  background: var(--accent-green);
+  width: 26px; border-radius: 4px;
+}
+
+/* compteur slide */
+.cl-counter {
+  position: absolute;
+  bottom: 22px; right: 28px;
+  z-index: 10;
+  font-family: var(--font-display);
+  font-size: .78rem; color: rgba(255,255,255,.45);
+  letter-spacing: .1em;
+}
+.cl-counter strong { color: #fff; }
+
+/* =====================================================
+   EVENT ROWS
+   Wireframe : image gauche (carré) + bloc texte droit (titre + desc + date)
+   Trois rangées : Hackathon / Journée des métiers / Smatching
+===================================================== */
+.cl-events {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px; /* align with header container */
+  background: transparent;
+}
+.cl-events {
+  width: 100%;
+  max-width: none; /* let events align to page padding */
+  padding: 12px 20px; /* match header .container horizontal padding */
+  background: transparent;
+}
+
+.cl-event-row {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  min-height: 180px;
+  background: var(--card-bg);
+  color: var(--body-text);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow var(--trans), transform .18s ease;
+  box-shadow: var(--shadow-sm);
+  margin: 18px 0;
+  max-width: none; /* allow full-width inside .cl-events padding */
+  width: 100%;
+}
+.cl-event-row:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+@media(max-width:900px) {
+  .cl-event-row { grid-template-columns: 1fr; }
+  .cl-event-img { min-height: 220px; }
+}
+
+/* image cellule */
+.cl-event-img {
+  position: relative;
+  overflow: hidden;
+  min-height: 160px;
+}
+.cl-event-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .45s ease;
+  /* slightly enlarge images by default so they appear more prominent
+     while keeping the card dimensions unchanged */
+  transform: scale(1.03);
+}
+.cl-event-row:hover .cl-event-img img { transform: scale(1.06); }
+
+/* overlay léger sur l'image */
+.cl-event-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,.06), transparent);
+  pointer-events: none;
+}
+
+/* badge catégorie sur l'image */
+.cl-event-cat {
+  position: absolute; top: 16px; left: 16px; z-index: 2;
+  font-family: var(--font-display);
+  font-size: .65rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--primary-blue);
+  background: var(--accent-green);
+  padding: 4px 12px; border-radius: 20px;
+}
+
+/* corps texte */
+.cl-event-body {
+  padding: 20px 24px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative;
+}
+/* ligne verte gauche */
+.cl-event-body::before {
+  content: '';
+  position: absolute; top: 18px; left: 18px; bottom: 18px;
+  width: 4px; background: var(--accent-green);
+  border-radius: 4px;
+}
+
+@media(max-width:700px) {
+  .cl-event-body { padding: 24px 20px; }
+  .cl-event-body::before { display: none; }
+}
+
+.cl-event-top { flex: 1; }
+
+/* titre événement */
+.cl-event-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: #111;
+  margin-bottom: 10px;
+  line-height: 1.18;
+}
+.cl-event-title span { color: var(--accent-green); }
+
+/* description */
+.cl-event-desc {
+  font-size: .95rem;
+  color: rgba(17,17,17,.8);
+  line-height: 1.6;
+  max-width: 640px;
+  margin-bottom: 14px;
+}
+
+/* infos supplémentaires (lieu, participants…) */
+.cl-event-meta {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 20px;
+}
+.cl-meta-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fbfbfd;
+  border: 1px solid rgba(16,24,40,.04);
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: .86rem; color: rgba(17,17,17,.7);
+}
+.cl-meta-pill svg { display: none; }
+.cl-meta-pill i { color: var(--accent-green); font-size: 14px; }
+
+/* make meta pill text slightly larger for readability */
+.cl-meta-pill { font-size: .95rem; }
+
+/* DATE — wireframe : barre pleine largeur en bas */
+.cl-event-date {
+  display: flex; align-items: center; gap: 12px;
+  background: #f6f8fb;
+  border: 1px solid rgba(16,24,40,.04);
+  border-radius: 10px;
+  padding: 10px 14px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.cl-event-date::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent-green); }
+
+/* larger readable date text inside cards */
+.cl-date-label { font-size: .9rem; }
+.cl-date-value { font-size: 1rem; }
+.cl-date-status { font-size: .78rem; padding: 6px 10px; }
+
+.cl-date-icon {
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.cl-date-label {
+  font-family: var(--font-display);
+  font-size: .78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: rgba(17,17,17,0.65); /* dark color in light mode */
+  margin-right: 6px;
+}
+.cl-date-value {
+  font-family: var(--font-display);
+  font-size: .92rem; font-weight: 700;
+  color: #111; /* dark in light mode */
+  letter-spacing: .02em;
+}
+.cl-date-status {
+  margin-left: auto;
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--primary-blue);
+  background: var(--accent-green);
+  padding: 3px 10px; border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* =====================================================
+   FOOTER BANNER
+   Wireframe : grande image + bouton "Découvrir MASTER"
+===================================================== */
+.cl-footer-banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex; align-items: center;
+  padding: 60px 28px;
+  background-color: #fff; /* light mode: white background */
+  color: #0b1220;
+}
+
+/* grille d'ambiance */
+.cl-footer-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(166,206,57,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166,206,57,.05) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* orbe décoratif */
+.cl-footer-banner::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(166,206,57,.12), transparent);
+  right: -120px; bottom: -120px;
+  pointer-events: none;
+}
+
+.cl-banner-inner {
+  position: relative; z-index: 1;
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: center;
+}
+
+.cl-banner-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-green);
+  background: rgba(166,206,57,.1);
+  border: 1px solid rgba(166,206,57,.3);
+  padding: 5px 16px; border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.cl-banner-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -.025em;
+  color: var(--primary-blue, #0b1220); /* dark in light-mode */
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.cl-banner-title span { color: var(--accent-green); }
+
+.cl-banner-sub {
+  font-size: 1rem;
+  color: rgba(12,18,32,.8);
+  max-width: 560px; margin: 0 0 24px 0;
+  line-height: 1.7;
+}
+
+/* BOUTON principal — wireframe : "Découvrir MASTER" */
+.btn-discover {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent-green);
+  color: var(--primary-blue);
+  padding: 14px 36px; border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: .95rem; font-weight: 800;
+  text-decoration: none; border: none; cursor: pointer;
+  letter-spacing: .01em;
+  transition: all var(--trans);
+  box-shadow: 0 0 32px rgba(166,206,57,.32);
+}
+.btn-discover:hover {
+  background: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(0,0,0,.25);
+}
+.btn-discover-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent;
+  border: 1.5px solid var(--primary-blue);
+  color: var(--primary-blue);
+  padding: 13px 36px; border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: .95rem; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+  transition: all var(--trans);
+}
+.btn-discover-ghost:hover {
+  background: var(--primary-blue);
+  color: #fff;
+  transform: translateY(-3px);
+  border-color: var(--primary-blue);
+}
+
+/* Dark-mode variant for ghost button (original white-on-dark look) */
+body.dark-mode .btn-discover-ghost {
+  background: rgba(255,255,255,.08);
+  border: 1.5px solid rgba(255,255,255,.28);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+body.dark-mode .btn-discover-ghost:hover { background: rgba(255,255,255,.16); }
+
+.cl-banner-btns {
+  display: flex; justify-content: center;
+  gap: 14px; flex-wrap: wrap;
+}
+
+.cl-banner-media {
+  width: 100%; height: 260px; border-radius: 14px; overflow: hidden;
+  position: relative; box-shadow: 0 10px 30px rgba(10,20,40,.08);
+  background: #e9eef6 center/cover no-repeat;
+}
+.cl-banner-media .cl-media-mask {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.12) 100%);
+}
+.cl-media-dots { position: absolute; left: 12px; bottom: 12px; z-index:2; display:flex; gap:8px; }
+.cl-media-dots button{ width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,.6); }
+.cl-media-dots button.active{ background:var(--accent-green); width:18px; border-radius:6px; }
+
+/* Dark mode: revert to gradient background and light text */
+body.dark-mode .cl-footer-banner { background: linear-gradient(160deg, rgba(26,35,112,.9) 0%, rgba(47,62,158,.84) 100%); color: #fff; }
+body.dark-mode .cl-banner-sub, body.dark-mode .cl-banner-title { color: rgba(200,220,255,.9); }
+body.dark-mode .btn-discover { box-shadow: 0 0 32px rgba(166,206,57,.12); }
+
+/* stronger masks in dark-mode for media and hero to ensure text contrast */
+body.dark-mode .cl-banner-media .cl-media-mask {
+  background: linear-gradient(180deg, rgba(0,0,0,0.36) 0%, rgba(0,0,0,0.56) 100%);
+}
+body.dark-mode .cl-slide::after {
+  background: linear-gradient(
+    to top,
+    rgba(8,12,26,.96)  0%,
+    rgba(26,35,112,.72) 45%,
+    transparent         100%
+  );
+}
+
+/* stats en bas de banner */
+.cl-banner-stats {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 40px; margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(10,20,40,.06);
+}
+.cl-bstat { text-align: center; }
+.cl-bstat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 800;
+  color: var(--accent-green); line-height: 1;
+  margin-bottom: 4px;
+}
+.cl-bstat span {
+  font-size: .78rem;
+  color: rgba(12,18,32,.65); /* dark text in light mode */
+  letter-spacing: .06em; text-transform: uppercase;
+}
