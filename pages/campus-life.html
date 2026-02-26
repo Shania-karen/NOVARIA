@@ -26,7 +26,7 @@
     </div>
 
     <nav class="nav">
-      <a href="#">Home</a>
+      <a href="../index.html">Home</a>
       <a href="#">Licence</a>
       <a href="#">Master</a>
       <a href="#" class="active">Campus Life</a>
@@ -35,10 +35,16 @@
     </nav>
 
     <div class="right-actions">
-      <button id="theme-toggle" class="theme-toggle"
-              aria-pressed="false" aria-label="Basculer thème clair/sombre">
-        <i id="icon-sun"  class="fa-solid fa-sun"  aria-hidden="true" title="mode clair"></i>
-        <i id="icon-moon" class="fa-solid fa-moon" aria-hidden="true" title="mode sombre" style="display:none;"></i>
+      <button class="theme-pill" id="theme-toggle">
+        <div class="theme-pill-thumb">
+          <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4.75V2M12 22v-2.75M4.75 12H2M22 12h-2.75M5.64 5.64l-1.95-1.95M20.31 20.31l-1.95-1.95M5.64 18.36l-1.95 1.95M20.31 3.69l-1.95 1.95M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+          </svg>
+    
+          <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </div>
       </button>
       <div class="menu-toggle">☰</div>
     </div>
@@ -417,12 +423,27 @@ const toggle = document.querySelector('.menu-toggle');
 const nav    = document.querySelector('.nav');
 toggle.addEventListener('click', () => nav.classList.toggle('active'));
 
-/* ── Dark / Light mode (fourni) ── */
+/* ── Dark / Light mode - comme index.html ── */
 const themeToggle = document.getElementById('theme-toggle');
 const body        = document.body;
-const iconSun     = document.getElementById('icon-sun');
-const iconMoon    = document.getElementById('icon-moon');
 const headerEl    = document.querySelector('.header');
+
+function setTheme(dark) {
+  dark
+    ? body.classList.add('dark-mode')
+    : body.classList.remove('dark-mode');
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+
+// Charger le thème sauvegardé
+const saved = localStorage.getItem('theme');
+if (saved === 'dark') {
+  setTheme(true);
+}
+
+themeToggle.addEventListener('click', () => {
+  setTheme(!body.classList.contains('dark-mode'));
+});
 
 /* Ajuste dynamique du padding-top du body pour correspondre
    à la hauteur du header fixe (corrige l'espace noir entre
@@ -433,24 +454,6 @@ function adjustBodyPadding() {
 // Exécuter au chargement et lors du redimensionnement
 adjustBodyPadding();
 window.addEventListener('resize', adjustBodyPadding);
-
-function applyTheme(theme) {
-  if (theme === 'dark') {
-    body.classList.add('dark-mode');
-    iconSun.style.display  = 'none';
-    iconMoon.style.display = 'block';
-  } else {
-    body.classList.remove('dark-mode');
-    iconSun.style.display  = 'block';
-    iconMoon.style.display = 'none';
-  }
-}
-applyTheme(localStorage.getItem('theme') || 'light');
-themeToggle.addEventListener('click', () => {
-  const isDark = body.classList.contains('dark-mode');
-  applyTheme(isDark ? 'light' : 'dark');
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
-});
 
 /* ── Hero Slider ── */
 const slides   = document.querySelectorAll('.cl-slide');
