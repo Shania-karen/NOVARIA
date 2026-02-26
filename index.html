@@ -4,542 +4,271 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ITUniversity</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <style>
-    /* ===== OPTIONS SECTION — glassmorphism moderne ===== */
-    .options-section {
-      padding: 60px 40px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
 
-    .options-section h2 {
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.6rem;
-      margin-bottom: 32px;
-      letter-spacing: 2px;
-      color: var(--blue);
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    /* Deux blocs côte à côte, même hauteur */
-    .options-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    /* Chaque bloc: options à gauche + dates à droite */
-    .options-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(40, 58, 151, 0.13);
-    }
-
-    /* Options list */
-    .options-left {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .option-card {
-      flex: 1;
-      background: rgba(245, 247, 255, 0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 0 24px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid rgba(83,106,228,0.1);
-      transition: background 0.2s, color 0.2s;
-      min-height: 0;
-    }
-
-    /* Chaque card prend 1/N de la hauteur du bloc */
-    .options-block .options-left {
-      height: 100%;
-    }
-
-    .option-card:last-child {
-      border-bottom: none;
-    }
-
-    .option-card::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--blue);
-      flex-shrink: 0;
-      transition: transform 0.25s;
-    }
-
-    .option-card:hover {
-      background: rgba(83,106,228,0.1);
-    }
-
-    .option-card:hover::before {
-      transform: scale(1.6);
-    }
-
-    .option-card.selected {
-      background: var(--blue);
-      color: #fff;
-    }
-
-    .option-card.selected::before {
-      background: #fff;
-    }
-
-    /* Dates panel — glass sur fond coloré */
-    .options-right {
-      background: linear-gradient(160deg, #3347c4 0%, var(--blue) 100%);
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 14px;
-    }
-
-    .options-date-box {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 10px;
-      padding: 12px 16px;
-      color: #fff;
-    }
-
-    .options-date-box .label {
-      font-size: 0.68rem;
-      opacity: 0.75;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .options-date-box .date {
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-top: 4px;
-    }
-
-    /* ---- GREEN variant ---- */
-    .options-block.green .option-card {
-      background: rgba(244, 255, 224, 0.92);
-      color: #3d5a00;
-      border-bottom-color: rgba(166,206,57,0.18);
-    }
-
-    .options-block.green .option-card::before {
-      background: #7aaa00;
-    }
-
-    .options-block.green .option-card:hover {
-      background: rgba(166,206,57,0.15);
-    }
-
-    .options-block.green .option-card.selected {
-      background: var(--green);
-      color: #2a3d00;
-    }
-
-    .options-block.green .option-card.selected::before {
-      background: #2a3d00;
-    }
-
-    .options-block.green .options-right {
-      background: linear-gradient(160deg, #7aaa00 0%, var(--green) 100%);
-    }
-
-    .options-block.green .options-date-box {
-      color: #1e3300;
-      border-color: rgba(255,255,255,0.35);
-      background: rgba(255,255,255,0.2);
-    }
-
-    /* CTA */
-    .options-cta {
-      text-align: center;
-      margin-top: 32px;
-    }
-
-    /* MOBILE: wrapper en colonne, chaque bloc garde 2 colonnes internes */
-    @media (max-width: 750px) {
-      .options-wrapper {
-        display: flex !important;
-        flex-direction: column !important;
-      }
-      .options-block {
-        display: grid !important;
-        grid-template-columns: 55% 45% !important;
-        width: 100% !important;
-      }
-      .options-left {
-        display: flex !important;
-        flex-direction: column !important;
-      }
-      .option-card {
-        font-size: 0.76rem !important;
-        padding: 0 10px !important;
-        min-height: 44px !important;
-      }
-      .options-right {
-        padding: 12px 10px !important;
-        gap: 10px !important;
-      }
-      .options-date-box {
-        padding: 8px 10px !important;
-      }
-      .options-date-box .date {
-        font-size: 0.8rem !important;
-      }
-      .options-date-box .label {
-        font-size: 0.58rem !important;
-      }
-    }
-
-    /* ===== DARK MODE — #283a97 + 10% noir = #243585 ===== */
-    html.dark body {
-      background: #161e4e;
-    }
-
-    html.dark .options-section h2,
-    html.dark .partners-title {
-      color: #a8b8ff;
-    }
-
-    html.dark .option-card {
-      background: rgba(36, 53, 133, 0.55);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      color: #c8d4ff;
-      border-bottom-color: rgba(168, 184, 255, 0.12);
-    }
-
-    html.dark .option-card::before {
-      background: #a8b8ff;
-    }
-
-    html.dark .option-card:hover {
-      background: rgba(36, 53, 133, 0.75);
-    }
-
-    html.dark .option-card.selected {
-      background: #243585;
-      color: #fff;
-    }
-
-    html.dark .option-card.selected::before {
-      background: #fff;
-    }
-
-    html.dark .options-block:not(.green) .options-right {
-      background: linear-gradient(160deg, #1a2660 0%, #243585 100%);
-    }
-
-    html.dark .options-date-box {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.15);
-    }
-
-    html.dark .options-block.green .option-card {
-      background: rgba(30, 50, 10, 0.55);
-      color: #c8e87a;
-      border-bottom-color: rgba(166,206,57,0.12);
-    }
-
-    html.dark .options-block.green .option-card::before {
-      background: var(--green);
-    }
-
-    html.dark .options-block.green .option-card:hover {
-      background: rgba(30, 50, 10, 0.75);
-    }
-
-    html.dark .options-block.green .option-card.selected {
-      background: #4e6e00;
-      color: #e8f5b0;
-    }
-
-    html.dark .about-band {
-      background: #1a2660;
-    }
-
-    html.dark .partners-section {
-      background: #161e4e;
-    }
-
-    html.dark .partner-logo {
-      background: rgba(36, 53, 133, 0.4);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    }
-
-    html.dark .footer {
-      background-color: #0f1535;
-    }
-
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
+<script>
+  (function () {
+    var stored      = localStorage.getItem('itu-theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (stored === 'dark' || (!stored && prefersDark)) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="container">
-    <div class="logo">
-      <img src="assets/icons/logo.png" alt="ITU Logo">
+  <header class="header">
+    <div class="header-inner">
+
+
+      <a href="#" class="logo">
+        <img src="assets/icons/ITU_logo_MAJ_negatif_sans_fond.png" alt="IT University">
+      </a>
+
+      <nav class="nav" id="mainNav">
+        <a href="#">Home</a>
+        <a href="#">Licence</a>
+        <a href="#">Master</a>
+        <a href="#">Campus Life</a>
+        <a href="#">Contact</a>
+        <a href="#" class="nav-cta">S'inscrire <span>→</span></a>
+      </nav>
+
+      <div class="right-actions">
+
+        <button class="theme-pill" id="themePill" aria-label="Basculer le thème">
+          <div class="theme-pill-thumb">
+           
+            <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 4.75V2M12 22v-2.75M4.75 12H2M22 12h-2.75M5.64 5.64l-1.95-1.95M20.31 20.31l-1.95-1.95M5.64 18.36l-1.95 1.95M20.31 3.69l-1.95 1.95M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+            </svg>
+      
+            <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          </div>
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
     </div>
-    <nav class="nav">
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg" style="background-image: url('assets/images/itUniversity.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+      <span class="hero-badge">
+        <span class="badge-dot"></span>
+        Licence &amp; Master en Informatique · Antananarivo
+      </span>
+
+      <h1 class="hero-title">
+        <span class="accent">Education</span> is our<br>foundation
+      </h1>
+
+      <p class="hero-sub">
+        Rejoins une université tech de référence à Madagascar.
+        Forme-toi aux métiers du numérique avec des professionnels en activité.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#" class="btn-green">Comment s'inscrire ? <span class="btn-arrow">→</span></a>
+        <a href="#programmes" class="btn-ghost">Nos programmes <span class="btn-arrow">↓</span></a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>5</strong>
+        <span>Spécialisations</span>
+      </div>
+      <div class="hero-stat">
+        <strong>2 000+</strong>
+        <span>Étudiants &amp; alumni</span>
+      </div>
+      <div class="hero-stat">
+        <strong>Bac+3</strong>
+        <span>Licence en 3 ans</span>
+      </div>
+      <div class="hero-stat">
+        <strong>Bac+5</strong>
+        <span>Master disponible</span>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="programmes" id="programmes">
+    <p class="sec-eyebrow">Nos filières</p>
+    <h2 class="sec-title">Choisis ton parcours</h2>
+    <p class="sec-sub">
+      Deux grandes filières, cinq spécialisations. Trouve celle qui correspond
+      à ta passion et à ton projet professionnel.
+    </p>
+
+    <div class="prog-grid">
+
+ 
+      <div class="prog-card blue" data-reveal>
+        <div class="prog-body">
+          <div class="prog-top">
+            <span class="prog-label">Informatique</span>
+          </div>
+          <div class="prog-option"><span class="prog-bullet"></span>Développement</div>
+          <div class="prog-option"><span class="prog-bullet"></span>Web et Design</div>
+          <div class="prog-option"><span class="prog-bullet"></span>Réseau et Base de Données</div>
+        </div>
+        <div class="prog-dates">
+          <div class="date-chip">
+            <div class="dl">Dépôt dossier</div>
+            <div class="dv">27 Sept 2027</div>
+          </div>
+          <div class="date-chip">
+            <div class="dl">Rentrée</div>
+            <div class="dv">17 Oct 2027</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prog-card green" data-reveal style="transition-delay: .1s">
+        <div class="prog-body">
+          <div class="prog-top">
+            
+            <span class="prog-label">Design &amp; Digital</span>
+          </div>
+          <div class="prog-option"><span class="prog-bullet"></span>Design &amp; Communication Digitale</div>
+          <div class="prog-option"><span class="prog-bullet"></span>Content Management &amp; Marketing</div>
+        </div>
+        <div class="prog-dates">
+          <div class="date-chip">
+            <div class="dl">Dépôt dossier</div>
+            <div class="dv">27 Sept 2027</div>
+          </div>
+          <div class="date-chip">
+            <div class="dl">Rentrée</div>
+            <div class="dv">17 Oct 2027</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="prog-cta">
+      <a href="#" class="btn-outline">Voir plus d'informations <span>→</span></a>
+    </div>
+  </section>
+
+
+  <section class="partners">
+    <p class="partners-eyebrow">Ils nous font confiance</p>
+    <div class="track-wrap">
+      <div class="partners-track" id="partnersTrack"></div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+  
+    <div class="footer-logo">
+      <img src="assets/icons/ITU_logo_MAJ_negatif_sans_fond.png" alt="IT University">
+    </div>
+    <div class="footer-links">
       <a href="#">Home</a>
-      <a href="#">Licence</a>
-      <a href="#">Master</a>
-      <a href="#">Campus Life</a>
-      <a href="#">Simulation</a>
-      <a href="#">Contact Us</a>
-    </nav>
-    <div class="right-actions">
-      <button id="theme-toggle" class="theme-toggle">
-        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 4.75V2M12 22v-2.75M4.75 12H2M22 12h-2.75M5.64 5.64l-1.95-1.95M20.31 20.31l-1.95-1.95M5.64 18.36l-1.95 1.95M20.31 3.69l-1.95 1.95M12 7a5 5 0 100 10 5 5 0 000-10z"/>
-        </svg>
-        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
-          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
-        </svg>
-      </button>
-      <div class="menu-toggle">☰</div>
+      <div class="footer-sep"></div>
+      <a href="#">Map &amp; Directions</a>
+      <div class="footer-sep"></div>
+      <a href="#">Contact</a>
+      <div class="footer-sep"></div>
+      <a href="#">About ITU</a>
     </div>
-  </div>
-</header>
+    <p class="footer-copy">© 2025 ITUniversity – Novaria</p>
+  </footer>
 
-<!-- HERO -->
-<section class="hero">
-  <img src="assets/images/itUniversity.jpg" alt="Campus ITU"/>
-  <div class="hero-overlay">
-    <a href="#" class="btn-hero">Comment S'inscrire ?</a>
-  </div>
-</section>
 
-<!-- ABOUT BAND -->
-<div class="about-band">
-  <div class="logo-sm">
-    <img src="assets/icons/logo.png" alt="ITU Logo"/>
-  </div>
-  <p>Licence &amp; Master en Informatique</p>
-  <a href="#">About ITU</a>
-</div>
+  <script>
+ 
+    const html = document.documentElement;
+    const pill = document.getElementById('themePill');
 
-<!-- OPTIONS -->
-<section class="options-section">
-  <h2>OPTIONS</h2>
-
-  <div class="options-wrapper">
-
-    <!-- Bloc Informatique (bleu) -->
-    <div class="options-block">
-      <div class="options-left">
-        <div class="option-card">Développement</div>
-        <div class="option-card">Web et Design</div>
-        <div class="option-card">Réseau et Base de Données</div>
-      </div>
-      <div class="options-right">
-        <div class="options-date-box">
-          <div class="label">Date limite de dépôt</div>
-          <div class="date">27 sept 2027</div>
-        </div>
-        <div class="options-date-box">
-          <div class="label">Rentrée</div>
-          <div class="date">17 Octobre 2027</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bloc Design (vert) -->
-    <div class="options-block green">
-      <div class="options-left">
-        <div class="option-card">Design et Communication Digital</div>
-        <div class="option-card">Content management et digital marketing</div>
-      </div>
-      <div class="options-right">
-        <div class="options-date-box">
-          <div class="label">Date limite de dépôt</div>
-          <div class="date">27 sept 2027</div>
-        </div>
-        <div class="options-date-box">
-          <div class="label">Rentrée</div>
-          <div class="date">17 Octobre 2027</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="options-cta">
-    <a href="#" class="btn-more">Plus d'informations</a>
-  </div>
-</section>
-
-<!-- PARTENAIRES -->
-<section class="partners-section">
-  <h2 class="partners-title">Nos Partenaires</h2>
-  <div class="partners-track-wrapper">
-    <div class="partners-track" id="partnersTrack"></div>
-  </div>
-</section>
-
-<style>
-  .partners-section {
-    padding: 50px 40px;
-    overflow: hidden;
-    background: var(--bg);
-  }
-
-  .partners-title {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    color: var(--blue);
-    margin-bottom: 32px;
-  }
-
-  .partners-track-wrapper {
-    overflow: hidden;
-    position: relative;
-    /* fade edges */
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  }
-
-  .partners-track {
-    display: flex;
-    gap: 32px;
-    width: max-content;
-    animation: scrollPartners 30s linear infinite;
-  }
-
-  .partners-track:hover {
-    animation-play-state: paused;
-  }
-
-  @keyframes scrollPartners {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .partner-logo {
-    height: 60px;
-    width: auto;
-    max-width: 140px;
-    object-fit: contain;
-    filter: grayscale(40%) opacity(0.8);
-    transition: filter 0.3s, transform 0.3s;
-    flex-shrink: 0;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(6px);
-    border-radius: 10px;
-    padding: 8px 16px;
-    box-shadow: 0 2px 12px rgba(40,58,151,0.08);
-  }
-
-  .partner-logo:hover {
-    filter: grayscale(0%) opacity(1);
-    transform: scale(1.08);
-  }
-</style>
-
-<script>
-  const sponsors = [
-    "67bc598e2ccb5df5d13ae1ae_BRED_MADAGASIKARA_BANQUE_POPULAIRE_FER_GAUCHE_LOGO_RVB.png",
-    "AccesBanque.png",
-    "Asisten-Logo-Medium-transparent.png",
-    "BASAN logo.png",
-    "Logo-30e-FTHM.png",
-    "Logo-Axian.png",
-    "Logo-PAMF.webp",
-    "LOGO-Softwell-Cop.png",
-    "Mesupres.png",
-    "MNDPT.jpg",
-    "QDATA.png",
-    "republique (1).png",
-    "Republique.png",
-    "Siooka_idzFl735uh_0.png",
-    "Yas_logo_2024.svg.png"
-  ];
-
-  const track = document.getElementById('partnersTrack');
-
-  // Double the list for seamless infinite scroll
-  [...sponsors, ...sponsors].forEach(file => {
-    const img = document.createElement('img');
-    img.src = `assets/sponsors/${file}`;
-    img.alt = file.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
-    img.className = 'partner-logo';
-    track.appendChild(img);
-  });
-</script>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-logo">
-    <img src="assets/icons/logo.png" alt="ITU Logo">
-  </div>
-  <div class="footer-links">
-    <a href="#">Home</a>
-    <a href="#">Map &amp; Directions</a>
-    <a href="#">Contact Info</a>
-    <a href="#">About ITU</a>
-  </div>
-  <p class="copyright">Copyright 2025-Novaria</p>
-</footer>
-
-<script>
-  // Mobile menu toggle
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav');
-  toggle.addEventListener('click', () => nav.classList.toggle('active'));
-
-  // Theme toggle
-  const themeToggle = document.getElementById('theme-toggle');
-  const html = document.documentElement;
-  const iconSun = document.getElementById('icon-sun');
-  const iconMoon = document.getElementById('icon-moon');
-
-  function applyTheme(theme) {
-    if (theme === 'dark') {
-      html.classList.add('dark');
-      iconSun.style.display = 'none';
-      iconMoon.style.display = 'block';
-    } else {
-      html.classList.remove('dark');
-      iconSun.style.display = 'block';
-      iconMoon.style.display = 'none';
+    function setTheme(dark) {
+      dark
+        ? html.classList.add('dark')
+        : html.classList.remove('dark');
+      localStorage.setItem('itu-theme', dark ? 'dark' : 'light');
     }
-  }
-  applyTheme(localStorage.getItem('theme') || 'light');
-  themeToggle.addEventListener('click', () => {
-    const isDark = html.classList.contains('dark');
-    applyTheme(isDark ? 'light' : 'dark');
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  });
 
-  // Card click highlight
-  document.querySelectorAll('.options-block').forEach(block => {
-    block.querySelectorAll('.option-card').forEach(card => {
-      card.addEventListener('click', () => {
-        block.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-        card.classList.toggle('selected');
-      });
+    pill.addEventListener('click', () => {
+      setTheme(!html.classList.contains('dark'));
     });
-  });
-</script>
+
+   
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('itu-theme')) setTheme(e.matches);
+    });
+
+   
+    const menuBtn = document.getElementById('menuToggle');
+    const nav     = document.getElementById('mainNav');
+
+    menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+
+    nav.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => nav.classList.remove('open'))
+    );
+
+    const sponsors = [
+      "67bc598e2ccb5df5d13ae1ae_BRED_MADAGASIKARA_BANQUE_POPULAIRE_FER_GAUCHE_LOGO_RVB.png",
+      "AccesBanque.png",
+      "Asisten-Logo-Medium-transparent.png",
+      "BASAN logo.png",
+      "Logo-30e-FTHM.png",
+      "Logo-Axian.png",
+      "Logo-PAMF.webp",
+      "LOGO-Softwell-Cop.png",
+      "Mesupres.png",
+      "MNDPT.jpg",
+      "QDATA.png",
+      "republique (1).png",
+      "Republique.png",
+      "Siooka_idzFl735uh_0.png",
+      "Yas_logo_2024.svg.png"
+    ];
+
+    const track = document.getElementById('partnersTrack');
+    [...sponsors, ...sponsors].forEach(file => {
+      const img     = document.createElement('img');
+      img.src       = `assets/sponsors/${file}`;
+      img.alt       = file.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+      img.className = 'partner-logo';
+      track.appendChild(img);
+    });
+
+
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+  </script>
 
 </body>
 </html>
