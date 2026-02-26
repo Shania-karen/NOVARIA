@@ -201,11 +201,26 @@ html.dark .theme-pill-thumb { left: 39px; }
   transition: fill .3s;
 }
 
-.icon-sun              { display: block; }
-.icon-moon             { display: none;  }
-html.dark .icon-sun    { display: none;  }
-html.dark .icon-moon   { display: block; }
+.theme-toggle i {
+  font-size: 20px;
+  color: var(--white);
+  transition: color 0.25s ease, transform 0.15s ease;
+  /* Font Awesome rendering specifics */
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900; /* solid */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
 
+/* Force specific icon colors and add interaction effect */
+#icon-sun { color: var(--white) !important; }
+#icon-moon { color: var(--white) !important; }
+.theme-toggle:active i { transform: scale(0.92) rotate(10deg); }
+.theme-toggle[aria-pressed="true"] i { transform: rotate(8deg) scale(1.02); }
+
+/* MENU MOBILE */
 .menu-toggle {
   display: none;
   background: none;
@@ -770,11 +785,26 @@ html.dark .btn-outline:hover       { background: #8899ee; color: #080e28; }
   .hero-stat strong { font-size: 1.15rem; }
 }
 
-@media (max-width: 500px) {
-  .hero-stats   { flex-wrap: wrap; }
-  .hero-stat    { flex: 1 1 45%; border-right: none; border-top: 1px solid rgba(255,255,255,.07); }
-  .hero-ctas    { flex-direction: column; align-items: center; }
-  .prog-card    { grid-template-columns: 1fr; }
-  .prog-dates   { flex-direction: row; flex-wrap: wrap; gap: 8px; }
-  .date-chip    { flex: 1; }
+/* ================= DARK MODE BODY ================= */
+body.dark-mode {
+  --body-bg: #111111;   /* fond sombre du body */
+  --body-text: #ffffff; /* texte principal blanc */
+}
+
+/* Global fade-in helper
+   Usage: add `class="fade-in"` to elements; when visible, `.visible` is added.
+*/
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s cubic-bezier(.23,1,.32,1), transform .7s cubic-bezier(.23,1,.32,1);
+  will-change: opacity, transform;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .fade-in.visible { transition: none; transform: none; opacity: 1; }
 }

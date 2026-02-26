@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Options – Licence en Informatique | IT University</title>
+  
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fichiers CSS séparés -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/options.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="../assets/icons/logo.png" alt="ITU Logo">
+    </div>
+
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#" class="active">Licence</a>
+      <a href="#">Master</a>
+      <a href="#">Campus Life</a>
+      <a href="#">Simulation</a>
+      <a href="#">Contact Us</a>
+    </nav>
+
+    <div class="right-actions">
+      <button id="theme-toggle" class="theme-toggle">
+        <i id="icon-sun" class="fa-solid fa-sun"></i>
+        <i id="icon-moon" class="fa-solid fa-moon" style="display:none;"></i>
+      </button>
+      <div class="menu-toggle">☰</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+  <!-- HERO SECTION AVEC PHOTO DE FOND -->
+  <section class="op-hero">
+    <div class="op-hero-inner">
+      <span class="op-hero-badge">Licence · 3 ans · Bac+3</span>
+
+      <h1 class="op-hero-title">
+        IT University innove sa branche de formation<br>
+        pour l'obtention d'une<br>
+        <span>Licence en Informatique</span>
+      </h1>
+
+      <p class="op-hero-sub">
+        Trois options spécialisées pour construire une carrière d'exception dans le numérique —
+        choisissez votre voie et intégrez un programme conçu avec les leaders de l'industrie tech.
+      </p>
+
+      <div class="op-hero-btns">
+        <a href="#bloc-info" class="btn-primary">S'inscrire</a>
+        <a href="#contact" class="btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOC 1 — OPTION INFORMATIQUE -->
+  <section class="op-block" id="bloc-info">
+    <div class="op-block-inner">
+      <!-- En-tête -->
+      <div class="op-block-header reveal">
+        <h2 class="op-block-title">1 – <span>Option Informatique</span></h2>
+        <span class="op-serie-badge">Série Scientifique</span>
+      </div>
+
+      <!-- Label spécialisation -->
+      <p class="op-options-label reveal rd1">Spécialisations</p>
+
+      <!-- Liste verticale des spécialisations avec icônes -->
+      <div class="op-options-vertical reveal rd1">
+        <div class="op-option-item">
+          <div class="option-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <span class="option-text">Développement</span>
+        </div>
+
+        <div class="op-option-item">
+          <div class="option-icon"><i class="fa-solid fa-palette"></i></div>
+          <span class="option-text">Web et Design</span>
+        </div>
+
+        <div class="op-option-item">
+          <div class="option-icon"><i class="fa-solid fa-database"></i></div>
+          <span class="option-text">Réseaux et bases de données</span>
+        </div>
+      </div>
+
+      <!-- Section Contenus -->
+      <div class="op-section-label reveal rd2">Contenus</div>
+
+      <!-- Grille avec TOUS les contenus visibles -->
+      <div class="contenus-grid reveal rd2">
+        <!-- Développement - Carte 1 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80" alt="Algorithmique">
+          </div>
+          <div class="op-content-body">
+            <h4>Algorithmique & Programmation</h4>
+            <p>Maîtrisez les structures de données et la programmation.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">Java</span>
+              <span class="op-tag">Python</span>
+              <span class="op-tag">C#</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Développement - Carte 2 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80" alt="Architecture">
+          </div>
+          <div class="op-content-body">
+            <h4>Architecture & DevOps</h4>
+            <p>Systèmes distribués, microservices, CI/CD.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">Spring Boot</span>
+              <span class="op-tag">Docker</span>
+              <span class="op-tag">CI/CD</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Web et Design - Carte 1 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&q=80" alt="UX Design">
+          </div>
+          <div class="op-content-body">
+            <h4>UX / UI Design</h4>
+            <p>Recherche utilisateur, wireframing, prototypage.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">Figma</span>
+              <span class="op-tag">Adobe XD</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Web et Design - Carte 2 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Front-end">
+          </div>
+          <div class="op-content-body">
+            <h4>Développement Front-end</h4>
+            <p>HTML5, CSS avancé, JavaScript, React.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">React</span>
+              <span class="op-tag">JavaScript</span>
+              <span class="op-tag">SEO</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Réseaux - Carte 1 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="Réseaux">
+          </div>
+          <div class="op-content-body">
+            <h4>Administration Réseaux</h4>
+            <p>Configuration LAN/WAN, VPN, sécurité.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">CCNA</span>
+              <span class="op-tag">VPN</span>
+              <span class="op-tag">Firewall</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Cloud - Carte 2 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80" alt="Cloud">
+          </div>
+          <div class="op-content-body">
+            <h4>Bases de Données & Cloud</h4>
+            <p>SQL, NoSQL, AWS, Azure.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">SQL</span>
+              <span class="op-tag">NoSQL</span>
+              <span class="op-tag">AWS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Débouchés avec SCROLL MANUEL -->
+      <div class="op-section-label reveal rd3">Débouchés</div>
+
+      <div class="op-debouches-container reveal rd3">
+        <div class="scroll-hint">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Faites défiler horizontalement pour voir plus de métiers</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        
+        <div class="op-debouches-scroll">
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h5>Développeur Full-stack</h5>
+            <p>Applications web complètes</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-database"></i></div>
+            <h5>Data Scientist</h5>
+            <p>Analyse de données massives</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-pencil-ruler"></i></div>
+            <h5>UX / UI Designer</h5>
+            <p>Interfaces utilisateur</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h5>Ingénieur Cybersécurité</h5>
+            <p>Protection des systèmes</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-cloud"></i></div>
+            <h5>Architecte Cloud</h5>
+            <p>Infrastructures scalables</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <h5>Chef de Projet IT</h5>
+            <p>Pilotage de projets</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-robot"></i></div>
+            <h5>IA Engineer</h5>
+            <p>Développement IA</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-chart-simple"></i></div>
+            <h5>Data Analyst</h5>
+            <p>Analyse de données</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Boutons -->
+      <div class="op-block-btns reveal rd4">
+        <a href="#contact" class="btn-primary">S'inscrire</a>
+        <a href="#contact" class="btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOC 2 — OPTION DIGITAL & CRÉATION -->
+  <section class="op-block" id="bloc-digital">
+    <div class="op-block-inner">
+      <div class="op-block-header reveal">
+        <h2 class="op-block-title">2 – <span>Option Digital & Création</span></h2>
+        <span class="op-serie-badge">Toutes séries</span>
+      </div>
+
+      <p class="op-options-label reveal rd1">Spécialisations</p>
+
+      <div class="op-options-vertical reveal rd1">
+        <div class="op-option-item">
+          <div class="option-icon"><i class="fa-solid fa-palette"></i></div>
+          <span class="option-text">Design & Communication</span>
+        </div>
+
+        <div class="op-option-item">
+          <div class="option-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <span class="option-text">Digital Marketing</span>
+        </div>
+      </div>
+
+      <div class="op-section-label reveal rd2">Contenus</div>
+
+      <!-- Grille avec TOUS les contenus visibles -->
+      <div class="contenus-grid reveal rd2">
+        <!-- Design - Carte 1 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80" alt="Motion Design">
+          </div>
+          <div class="op-content-body">
+            <h4>Motion Design & Identité</h4>
+            <p>Conception graphique, motion 2D/3D.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">After Effects</span>
+              <span class="op-tag">Photoshop</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Design - Carte 2 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="Direction Artistique">
+          </div>
+          <div class="op-content-body">
+            <h4>3D & Direction Artistique</h4>
+            <p>Modélisation 3D, rendu, montage vidéo.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">Blender</span>
+              <span class="op-tag">Premiere Pro</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Marketing - Carte 1 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80" alt="SEO">
+          </div>
+          <div class="op-content-body">
+            <h4>SEO / SEA & Analytics</h4>
+            <p>Référencement, Google Ads, Analytics.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">Google Ads</span>
+              <span class="op-tag">GA4</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Marketing - Carte 2 -->
+        <div class="op-content-card">
+          <div class="op-content-img">
+            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80" alt="Social Media">
+          </div>
+          <div class="op-content-body">
+            <h4>Social Media & Automation</h4>
+            <p>Community management, email marketing.</p>
+            <div class="op-content-tags">
+              <span class="op-tag">Meta Ads</span>
+              <span class="op-tag">HubSpot</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="op-section-label reveal rd3">Débouchés</div>
+
+      <div class="op-debouches-container reveal rd3">
+        <div class="scroll-hint">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Faites défiler horizontalement pour voir plus de métiers</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+        
+        <div class="op-debouches-scroll">
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-palette"></i></div>
+            <h5>Directeur Artistique</h5>
+            <p>Direction créative</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-film"></i></div>
+            <h5>Motion Designer</h5>
+            <p>Animations 2D/3D</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h5>Traffic Manager</h5>
+            <p>Campagnes payantes</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-users"></i></div>
+            <h5>Community Manager</h5>
+            <p>Animation de communautés</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-gear"></i></div>
+            <h5>Product Owner</h5>
+            <p>Pilotage produit</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-file-lines"></i></div>
+            <h5>Content Strategist</h5>
+            <p>Stratégie éditoriale</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-camera"></i></div>
+            <h5>Photographe Digital</h5>
+            <p>Production visuelle</p>
+          </div>
+
+          <div class="op-debouche-card">
+            <div class="op-debouche-icon"><i class="fa-solid fa-video"></i></div>
+            <h5>Vidéaste Web</h5>
+            <p>Création de contenu vidéo</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="op-block-btns reveal rd4">
+        <a href="#contact" class="btn-primary">S'inscrire</a>
+        <a href="#contact" class="btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-logo">
+    <img src="../assets/icons/logo.png" alt="ITU Logo">
+  </div>
+
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#">Map & Directions</a>
+    <a href="#">Contact Info</a>
+    <a href="#">About ITU</a>
+  </div>
+
+  <p class="copyright">Copyright 2025 – Novaria</p>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  toggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  const iconSun = document.getElementById('icon-sun');
+  const iconMoon = document.getElementById('icon-moon');
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      body.classList.add('dark-mode');
+      iconSun.style.display = 'none';
+      iconMoon.style.display = 'block';
+    } else {
+      body.classList.remove('dark-mode');
+      iconSun.style.display = 'block';
+      iconMoon.style.display = 'none';
+    }
+  }
+
+  applyTheme(localStorage.getItem('theme') || 'light');
+  
+  themeToggle.addEventListener('click', () => {
+    const isDark = body.classList.contains('dark-mode');
+    applyTheme(isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+
+  // Ajuste le padding-top du body pour compenser le header fixe
+  const headerEl = document.querySelector('.header');
+  function adjustBodyPadding() {
+    if (headerEl) {
+      const h = headerEl.offsetHeight + 'px';
+      document.body.style.paddingTop = h;
+      document.documentElement.style.setProperty('--header-h', h);
+    }
+  }
+  adjustBodyPadding();
+  window.addEventListener('resize', adjustBodyPadding);
+
+  // Scroll reveal
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+</script>
+
+</body>
+</html>

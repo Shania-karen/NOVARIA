@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Life – IT University | Vie Étudiante</title>
+  <meta name="description" content="Hackathon, Journée des Métiers, Smatching… Découvrez la vie sur le campus d'IT University et rejoignez une communauté dynamique.">
+
+  <!-- Style global (fourni) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Style spécifique Campus Life -->
+  <link rel="stylesheet" href="../css/campus.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HEADER (fourni, inchangé)
+═══════════════════════════════════════ -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="../assets/icons/logo.png" alt="ITU Logo"
+           onerror="this.outerHTML='<span style=\'font-family:Syne,sans-serif;font-size:1.2rem;font-weight:800;color:#fff\'>IT<span style=\'color:#A6CE39\'>U</span></span>'">
+    </div>
+
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">Licence</a>
+      <a href="#">Master</a>
+      <a href="#" class="active">Campus Life</a>
+      <a href="#">Simulation</a>
+      <a href="#">Contact Us</a>
+    </nav>
+
+    <div class="right-actions">
+      <button id="theme-toggle" class="theme-toggle"
+              aria-pressed="false" aria-label="Basculer thème clair/sombre">
+        <i id="icon-sun"  class="fa-solid fa-sun"  aria-hidden="true" title="mode clair"></i>
+        <i id="icon-moon" class="fa-solid fa-moon" aria-hidden="true" title="mode sombre" style="display:none;"></i>
+      </button>
+      <div class="menu-toggle">☰</div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     MAIN
+═══════════════════════════════════════ -->
+<main>
+
+  <!-- ╔══════════════════════════════════════════════╗
+       ║  HERO SLIDER                                 ║
+       ║  Wireframe : IMAGE plein écran + texte bas   ║
+       ║              + 3 dots de pagination          ║
+       ╚══════════════════════════════════════════════╝ -->
+  <section class="cl-hero" id="hero">
+
+    <!-- Slide 1 -->
+        <div class="cl-slide active">
+       <div class="cl-slide-bg"
+         style="background-image:url('../assets/images/campus-life (1).jpg')">
+       </div>
+      <div class="cl-slide-content">
+        <span class="cl-slide-badge">Campus Life · Antananarivo</span>
+        <h1 class="cl-slide-title">
+          Obtentir une<br>
+          <span>Licence en Informatique</span>
+        </h1>
+        <p class="cl-slide-sub">
+          Un campus vivant où chaque étudiant construit son avenir,
+          ses compétences et ses réseaux professionnels.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+        <div class="cl-slide">
+       <div class="cl-slide-bg"
+         style="background-image:url('../assets/images/campus-life (2).jpg')">
+       </div>
+      <div class="cl-slide-content">
+        <span class="cl-slide-badge">Événements &amp; Networking</span>
+        <h1 class="cl-slide-title">
+          Des événements qui<br>
+          <span>font la différence</span>
+        </h1>
+        <p class="cl-slide-sub">
+          Hackathons, Journée des Métiers, Smatching — chaque édition
+          est une opportunité de rencontrer les acteurs de l'industrie tech.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+        <div class="cl-slide">
+       <div class="cl-slide-bg"
+         style="background-image:url('../assets/images/campus-life (3).jpg')">
+       </div>
+      <div class="cl-slide-content">
+        <span class="cl-slide-badge">Communauté &amp; Réseaux</span>
+        <h1 class="cl-slide-title">
+          <span>Ensemble</span>,<br>
+          on va plus loin
+        </h1>
+        <p class="cl-slide-sub">
+          Plus de 2 000 étudiants et alumni répartis dans les entreprises
+          les plus dynamiques de Madagascar et au-delà.
+        </p>
+      </div>
+    </div>
+
+    <!-- DOTS (wireframe : 3 cercles centrés sous le hero) -->
+    <div class="cl-dots" id="sliderDots">
+      <button class="cl-dot active" data-i="0" aria-label="Slide 1"></button>
+      <button class="cl-dot"        data-i="1" aria-label="Slide 2"></button>
+      <button class="cl-dot"        data-i="2" aria-label="Slide 3"></button>
+    </div>
+
+    
+  </section>
+
+
+  <!-- ╔══════════════════════════════════════════════════════╗
+       ║  EVENT ROWS                                          ║
+       ║  Wireframe : IMAGE gauche | TITRE + DESC + DATE droit║
+       ║  3 rangées : Hackathon / Journée des métiers /       ║
+       ║              Smatching                               ║
+       ╚══════════════════════════════════════════════════════╝ -->
+  <div class="cl-events">
+
+    <!-- ── ROW 1 : HACKATHON ── -->
+    <div class="cl-event-row reveal">
+
+      <!-- IMAGE gauche -->
+      <div class="cl-event-img">
+        <img
+          src="../assets/images/events (1).jpg"
+          alt="Hackathon ITU — équipes en pleine action"
+          loading="lazy">
+        <span class="cl-event-cat">Compétition</span>
+      </div>
+
+      <!-- CORPS droit -->
+      <div class="cl-event-body">
+        <div class="cl-event-top">
+
+          <!-- TITRE — wireframe : "HACKATHON" -->
+          <h2 class="cl-event-title">
+            <span>Hackathon</span> ITU 2024
+          </h2>
+
+          <!-- DESCRIPTION (contenu réel) -->
+          <p class="cl-event-desc">
+            48 heures non-stop pour concevoir, prototyper et présenter une solution
+            numérique innovante devant un jury de professionnels. Des équipes de 3 à 5
+            étudiants s'affrontent sur des problématiques réelles soumises par les
+            entreprises partenaires. Prix : matériel tech, bourses et opportunités de stage.
+          </p>
+
+          <!-- META pills -->
+          <div class="cl-event-meta">
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              150 participants
+            </span>
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              Campus ITU · Salle Innovation
+            </span>
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              48 heures
+            </span>
+          </div>
+
+        </div>
+
+        <!-- DATE — wireframe : barre pleine largeur -->
+        <div class="cl-event-date">
+          <span class="cl-date-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span>
+          <span class="cl-date-label">Date</span>
+          <span class="cl-date-value">14 &amp; 15 Juin 2024</span>
+          <span class="cl-date-status">Inscriptions ouvertes</span>
+        </div>
+      </div>
+    </div><!-- /hackathon -->
+
+
+    <!-- ── ROW 2 : JOURNÉE DES MÉTIERS ── -->
+    <div class="cl-event-row reveal rd1">
+
+      <!-- IMAGE gauche -->
+      <div class="cl-event-img">
+        <img
+          src="../assets/images/events (2).jpg"
+          alt="Journée des Métiers — conférenciers et stands entreprises"
+          loading="lazy">
+        <span class="cl-event-cat">Forum</span>
+      </div>
+
+      <!-- CORPS droit -->
+      <div class="cl-event-body">
+        <div class="cl-event-top">
+
+          <!-- TITRE — wireframe : "Journee des metier" -->
+          <h2 class="cl-event-title">
+            Journée des <span>Métiers</span>
+          </h2>
+
+          <!-- DESCRIPTION -->
+          <p class="cl-event-desc">
+            Un forum annuel qui réunit 40+ entreprises partenaires du secteur numérique,
+            télécom et digital pour présenter leurs métiers, leurs besoins en recrutement
+            et leurs offres de stage. Conférences, tables rondes et speed-meetings avec
+            les DRH — une journée décisive pour votre orientation professionnelle.
+          </p>
+
+          <!-- META pills -->
+          <div class="cl-event-meta">
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+              40+ entreprises
+            </span>
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              Campus ITU · Grand Hall
+            </span>
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              1 journée
+            </span>
+          </div>
+
+        </div>
+
+        <!-- DATE -->
+        <div class="cl-event-date">
+          <span class="cl-date-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span>
+          <span class="cl-date-label">Date</span>
+          <span class="cl-date-value">20 Septembre 2024</span>
+          <span class="cl-date-status">À venir</span>
+        </div>
+      </div>
+    </div><!-- /journee metiers -->
+
+
+    <!-- ── ROW 3 : SMATCHING ── -->
+    <div class="cl-event-row reveal rd2">
+
+      <!-- IMAGE gauche -->
+      <div class="cl-event-img">
+        <img
+          src="../assets/images/events (3).jpg"
+          alt="Smatching ITU — speed-dating entreprises étudiants"
+          loading="lazy">
+        <span class="cl-event-cat">Networking</span>
+      </div>
+
+      <!-- CORPS droit -->
+      <div class="cl-event-body">
+        <div class="cl-event-top">
+
+          <!-- TITRE — wireframe : "Smatching" -->
+          <h2 class="cl-event-title">
+            <span>Smatching</span> — Speed Networking
+          </h2>
+
+          <!-- DESCRIPTION -->
+          <p class="cl-event-desc">
+            Le Smatching est un événement de speed-dating professionnel où les étudiants
+            ITU rencontrent tour à tour des recruteurs et entrepreneurs en entretiens courts
+            de 7 minutes. Une formule intense et efficace pour décrocher un stage, un emploi
+            ou un mentor en une seule matinée. Bilan : 85 % des participants repartent
+            avec un contact qualifié.
+          </p>
+
+          <!-- META pills -->
+          <div class="cl-event-meta">
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              200+ rencontres
+            </span>
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              Campus ITU · Espace Networking
+            </span>
+            <span class="cl-meta-pill">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              Matinée — 3h
+            </span>
+          </div>
+
+        </div>
+
+        <!-- DATE -->
+        <div class="cl-event-date">
+          <span class="cl-date-icon"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span>
+          <span class="cl-date-label">Date</span>
+          <span class="cl-date-value">12 Octobre 2024</span>
+          <span class="cl-date-status">Prochainement</span>
+        </div>
+      </div>
+    </div><!-- /smatching -->
+
+  </div><!-- /cl-events -->
+
+  <!-- ╔══════════════════════════════════════════════════════╗
+       ║  TÉMOIGNAGES ÉTUDIANTS / ALUMNI                      ║
+       ║  Citations courtes + photo circulaire                 ║
+       ╚══════════════════════════════════════════════════════╝ -->
+  <section class="cl-testimonials reveal rd2" aria-label="Témoignages étudiants">
+    <div class="cl-testimonials-inner">
+      <h2 class="cl-section-title">Ils racontent leur expérience</h2>
+      <p class="cl-section-sub">Étudiants et alumni partagent leur parcours, leurs réussites et la vie sur le campus.</p>
+
+      <div class="cl-testimonial-grid" role="list">
+        <article class="cl-testimonial-card" role="listitem">
+          <div class="cl-testimonial-photo" aria-hidden="true">
+            <img src="../assets/images/events (1).jpg" alt="Portrait Mialy" loading="lazy">
+          </div>
+          <div class="cl-testimonial-body">
+            <p class="cl-testimonial-quote">« Grâce aux 5 options de spécialisation, j'ai pu construire un parcours sur mesure. Aujourd'hui, je suis Directeur de projet web, un métier que je n'aurais pas imaginé possible sans cette formation polyvalente."</p>
+            <p class="cl-testimonial-meta"><strong>Mialy R.</strong> — Directrice de projet web</p>
+          </div>
+        </article>
+
+        <article class="cl-testimonial-card" role="listitem">
+          <div class="cl-testimonial-photo" aria-hidden="true">
+            <img src="../assets/images/events (2).jpg" alt="Portrait Faly" loading="lazy">
+          </div>
+          <div class="cl-testimonial-body">
+            <p class="cl-testimonial-quote">"Ce que j'ai préféré ? Avoir mon propre ordinateur et travailler dans des labos bien équipés. On apprend directement sur les mêmes outils qu'en entreprise, ce qui fait toute la différence."</p>
+            <p class="cl-testimonial-meta"><strong>Faly A.</strong> — Alumni, Licence Informatique</p>
+          </div>
+        </article>
+
+        <article class="cl-testimonial-card" role="listitem">
+          <div class="cl-testimonial-photo" aria-hidden="true">
+            <img src="../assets/images/events (3).jpg" alt="Portrait Hery" loading="lazy">
+          </div>
+          <div class="cl-testimonial-body">
+            <p class="cl-testimonial-quote">"Les enseignants ne sont pas seulement des professeurs, ce sont des professionnels en activité. Leurs conseils et leur réseau m'ont ouvert des portes avant même la fin de ma licence."</p>
+            <p class="cl-testimonial-meta"><strong>Hery R.</strong> — Alumni, Master IA</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔═════════════════════════════════════════════════╗
+       ║  FOOTER BANNER                                  ║
+       ║  Wireframe : IMAGE plein + bouton MASTER centré ║
+       ╚═════════════════════════════════════════════════╝ -->
+  <section class="cl-footer-banner">
+    <div class="cl-banner-inner reveal">
+      <div class="cl-banner-content">
+        <span class="cl-banner-badge">Après la Licence</span>
+
+        <h3 class="cl-banner-title">
+          Continuez vers le<br>
+          <span>Master IT University</span>
+        </h3>
+
+        <p class="cl-banner-sub">
+          Approfondissez votre expertise avec un Master spécialisé en 2 ans —
+          Intelligence Artificielle, BIHAR et l'École NICE. Carrières
+          internationales et spécialisations orientées industrie.
+        </p>
+
+        <div class="cl-banner-btns">
+    
+          <a href="#" class="btn-discover-ghost">En savoir plus</a>
+        </div>
+
+        <!-- <div class="cl-banner-stats reveal rd2">
+          <div class="cl-bstat"><strong>2 ans</strong><span>Durée du Master</span></div>
+          <div class="cl-bstat"><strong>3</strong><span>Parcours clés</span></div>
+          <div class="cl-bstat"><strong>94 %</strong><span>Insertion pro</span></div>
+          <div class="cl-bstat"><strong>Bac+5</strong><span>Diplôme reconnu</span></div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER (fourni, inchangé)
+═══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="../assets/icons/logo.png" alt="ITU Logo"
+         onerror="this.outerHTML='<span style=\'font-family:Syne,sans-serif;font-size:1.2rem;font-weight:800;color:#fff\'>IT<span style=\'color:#A6CE39\'>U</span></span>'">
+  </div>
+
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#">Map &amp; Directions</a>
+    <a href="#">Contact Info</a>
+    <a href="#">About ITU</a>
+  </div>
+
+  <p class="copyright">Copyright 2025 – Novaria</p>
+</footer>
+
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
+<script>
+/* ── Mobile menu (fourni) ── */
+const toggle = document.querySelector('.menu-toggle');
+const nav    = document.querySelector('.nav');
+toggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+/* ── Dark / Light mode (fourni) ── */
+const themeToggle = document.getElementById('theme-toggle');
+const body        = document.body;
+const iconSun     = document.getElementById('icon-sun');
+const iconMoon    = document.getElementById('icon-moon');
+const headerEl    = document.querySelector('.header');
+
+/* Ajuste dynamique du padding-top du body pour correspondre
+   à la hauteur du header fixe (corrige l'espace noir entre
+   header et hero causé par différence de hauteur) */
+function adjustBodyPadding() {
+  if (headerEl) body.style.paddingTop = headerEl.offsetHeight + 'px';
+}
+// Exécuter au chargement et lors du redimensionnement
+adjustBodyPadding();
+window.addEventListener('resize', adjustBodyPadding);
+
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    body.classList.add('dark-mode');
+    iconSun.style.display  = 'none';
+    iconMoon.style.display = 'block';
+  } else {
+    body.classList.remove('dark-mode');
+    iconSun.style.display  = 'block';
+    iconMoon.style.display = 'none';
+  }
+}
+applyTheme(localStorage.getItem('theme') || 'light');
+themeToggle.addEventListener('click', () => {
+  const isDark = body.classList.contains('dark-mode');
+  applyTheme(isDark ? 'light' : 'dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+});
+
+/* ── Hero Slider ── */
+const slides   = document.querySelectorAll('.cl-slide');
+const dots     = document.querySelectorAll('.cl-dot');
+const slideNum = document.getElementById('slideNum');
+let   current  = 0;
+let   autoTimer;
+
+function goTo(idx) {
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = (idx + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+  slideNum.textContent = String(current + 1).padStart(2, '0');
+}
+
+function startAuto() {
+  clearInterval(autoTimer);
+  autoTimer = setInterval(() => goTo(current + 1), 6000);
+}
+
+dots.forEach(d => {
+  d.addEventListener('click', () => {
+    goTo(parseInt(d.dataset.i));
+    startAuto();
+  });
+});
+
+/* swipe tactile */
+let tx = 0;
+const hero = document.getElementById('hero');
+hero.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+hero.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) { goTo(dx < 0 ? current + 1 : current - 1); startAuto(); }
+}, { passive: true });
+
+startAuto();
+
+/* ── Scroll Reveal ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+<!-- Global scroll reveal (fade-in) -->
+<script src="../js/scroll-reveal.js" defer></script>
+
+</body>
+</html>
