@@ -1,5 +1,12 @@
+@font-face {
+  font-family: 'Fractul Black';
+  src: url('../assets/fonts/fonnts.com-fractul-italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  --primary-blue: #2F3E9E;  /* Header / Footer */
+  --primary-blue: #283a97;  /* Header / Footer */
   --accent-green: #A6CE39;
   --white: #ffffff;
 
@@ -36,7 +43,7 @@ html.dark {
 }
 
 body {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: 'Fractul Italic', sans-serif;
   background: var(--bg);
   color: var(--text);
   transition: background 0.3s, color 0.3s;
