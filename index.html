@@ -5,6 +5,289 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ITUniversity</title>
   <link rel="stylesheet" href="./css/style.css">
+  <style>
+    /* ===== OPTIONS SECTION — glassmorphism moderne ===== */
+    .options-section {
+      padding: 60px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .options-section h2 {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 32px;
+      letter-spacing: 2px;
+      color: var(--blue);
+    }
+
+    /* Deux blocs côte à côte, même hauteur */
+    .options-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    /* Chaque bloc: options à gauche + dates à droite */
+    .options-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(40, 58, 151, 0.13);
+    }
+
+    /* Options list */
+    .options-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .option-card {
+      flex: 1;
+      background: rgba(245, 247, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 0 24px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(83,106,228,0.1);
+      transition: background 0.2s, color 0.2s;
+      min-height: 0;
+    }
+
+    /* Chaque card prend 1/N de la hauteur du bloc */
+    .options-block .options-left {
+      height: 100%;
+    }
+
+    .option-card:last-child {
+      border-bottom: none;
+    }
+
+    .option-card::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+
+    .option-card:hover {
+      background: rgba(83,106,228,0.1);
+    }
+
+    .option-card:hover::before {
+      transform: scale(1.6);
+    }
+
+    .option-card.selected {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .option-card.selected::before {
+      background: #fff;
+    }
+
+    /* Dates panel — glass sur fond coloré */
+    .options-right {
+      background: linear-gradient(160deg, #3347c4 0%, var(--blue) 100%);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .options-date-box {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #fff;
+    }
+
+    .options-date-box .label {
+      font-size: 0.68rem;
+      opacity: 0.75;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .options-date-box .date {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    /* ---- GREEN variant ---- */
+    .options-block.green .option-card {
+      background: rgba(244, 255, 224, 0.92);
+      color: #3d5a00;
+      border-bottom-color: rgba(166,206,57,0.18);
+    }
+
+    .options-block.green .option-card::before {
+      background: #7aaa00;
+    }
+
+    .options-block.green .option-card:hover {
+      background: rgba(166,206,57,0.15);
+    }
+
+    .options-block.green .option-card.selected {
+      background: var(--green);
+      color: #2a3d00;
+    }
+
+    .options-block.green .option-card.selected::before {
+      background: #2a3d00;
+    }
+
+    .options-block.green .options-right {
+      background: linear-gradient(160deg, #7aaa00 0%, var(--green) 100%);
+    }
+
+    .options-block.green .options-date-box {
+      color: #1e3300;
+      border-color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* CTA */
+    .options-cta {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    /* MOBILE: wrapper en colonne, chaque bloc garde 2 colonnes internes */
+    @media (max-width: 750px) {
+      .options-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .options-block {
+        display: grid !important;
+        grid-template-columns: 55% 45% !important;
+        width: 100% !important;
+      }
+      .options-left {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .option-card {
+        font-size: 0.76rem !important;
+        padding: 0 10px !important;
+        min-height: 44px !important;
+      }
+      .options-right {
+        padding: 12px 10px !important;
+        gap: 10px !important;
+      }
+      .options-date-box {
+        padding: 8px 10px !important;
+      }
+      .options-date-box .date {
+        font-size: 0.8rem !important;
+      }
+      .options-date-box .label {
+        font-size: 0.58rem !important;
+      }
+    }
+
+    /* ===== DARK MODE — #283a97 + 10% noir = #243585 ===== */
+    html.dark body {
+      background: #161e4e;
+    }
+
+    html.dark .options-section h2,
+    html.dark .partners-title {
+      color: #a8b8ff;
+    }
+
+    html.dark .option-card {
+      background: rgba(36, 53, 133, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #c8d4ff;
+      border-bottom-color: rgba(168, 184, 255, 0.12);
+    }
+
+    html.dark .option-card::before {
+      background: #a8b8ff;
+    }
+
+    html.dark .option-card:hover {
+      background: rgba(36, 53, 133, 0.75);
+    }
+
+    html.dark .option-card.selected {
+      background: #243585;
+      color: #fff;
+    }
+
+    html.dark .option-card.selected::before {
+      background: #fff;
+    }
+
+    html.dark .options-block:not(.green) .options-right {
+      background: linear-gradient(160deg, #1a2660 0%, #243585 100%);
+    }
+
+    html.dark .options-date-box {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    html.dark .options-block.green .option-card {
+      background: rgba(30, 50, 10, 0.55);
+      color: #c8e87a;
+      border-bottom-color: rgba(166,206,57,0.12);
+    }
+
+    html.dark .options-block.green .option-card::before {
+      background: var(--green);
+    }
+
+    html.dark .options-block.green .option-card:hover {
+      background: rgba(30, 50, 10, 0.75);
+    }
+
+    html.dark .options-block.green .option-card.selected {
+      background: #4e6e00;
+      color: #e8f5b0;
+    }
+
+    html.dark .about-band {
+      background: #1a2660;
+    }
+
+    html.dark .partners-section {
+      background: #161e4e;
+    }
+
+    html.dark .partner-logo {
+      background: rgba(36, 53, 133, 0.4);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    html.dark .footer {
+      background-color: #0f1535;
+    }
+
+  </style>
 </head>
 <body>
 
@@ -14,7 +297,6 @@
     <div class="logo">
       <img src="assets/icons/logo.png" alt="ITU Logo">
     </div>
-
     <nav class="nav">
       <a href="#">Home</a>
       <a href="#">Licence</a>
@@ -23,9 +305,7 @@
       <a href="#">Simulation</a>
       <a href="#">Contact Us</a>
     </nav>
-
     <div class="right-actions">
-      <!-- Toggle Light/Dark Mode -->
       <button id="theme-toggle" class="theme-toggle">
         <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M12 4.75V2M12 22v-2.75M4.75 12H2M22 12h-2.75M5.64 5.64l-1.95-1.95M20.31 20.31l-1.95-1.95M5.64 18.36l-1.95 1.95M20.31 3.69l-1.95 1.95M12 7a5 5 0 100 10 5 5 0 000-10z"/>
@@ -34,25 +314,23 @@
           <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
         </svg>
       </button>
-
       <div class="menu-toggle">☰</div>
     </div>
   </div>
 </header>
 
-
 <!-- HERO -->
 <section class="hero">
   <img src="assets/images/itUniversity.jpg" alt="Campus ITU"/>
   <div class="hero-overlay">
-   <a href="#" class="btn-hero">Comment S'inscrire ?</a>
+    <a href="#" class="btn-hero">Comment S'inscrire ?</a>
   </div>
 </section>
 
 <!-- ABOUT BAND -->
 <div class="about-band">
   <div class="logo-sm">
-        <img src="assets/icons/logo.png" alt="ITU Logo"/>
+    <img src="assets/icons/logo.png" alt="ITU Logo"/>
   </div>
   <p>Licence &amp; Master en Informatique</p>
   <a href="#">About ITU</a>
@@ -61,105 +339,206 @@
 <!-- OPTIONS -->
 <section class="options-section">
   <h2>OPTIONS</h2>
-  <div class="options-grid">
-    <!-- Licence block -->
-    <div class="option-block">
-      <div class="option-courses">
-        <div class="option-course-btn">Développement</div>
-        <div class="option-course-btn">Web et Design</div>
-        <div class="option-course-btn">Réseau et Base de Données</div>
+
+  <div class="options-wrapper">
+
+    <!-- Bloc Informatique (bleu) -->
+    <div class="options-block">
+      <div class="options-left">
+        <div class="option-card">Développement</div>
+        <div class="option-card">Web et Design</div>
+        <div class="option-card">Réseau et Base de Données</div>
       </div>
-    </div>
-    <div class="option-block">
-      <div class="option-dates">
-        <div class="date-box">
-          <div class="label">Date limite de dépôt :</div>
+      <div class="options-right">
+        <div class="options-date-box">
+          <div class="label">Date limite de dépôt</div>
           <div class="date">27 sept 2027</div>
         </div>
-        <div class="date-box">
-          <div class="label">Rentrée :</div>
+        <div class="options-date-box">
+          <div class="label">Rentrée</div>
           <div class="date">17 Octobre 2027</div>
         </div>
       </div>
     </div>
-    <!-- Master block -->
-    <div class="option-block green">
-      <div class="option-courses">
-        <div class="option-course-btn">Design et Communication Digital</div>
-        <div class="option-course-btn">Content management et digital marketing</div>
+
+    <!-- Bloc Design (vert) -->
+    <div class="options-block green">
+      <div class="options-left">
+        <div class="option-card">Design et Communication Digital</div>
+        <div class="option-card">Content management et digital marketing</div>
       </div>
-    </div>
-    <div class="option-block green">
-      <div class="option-dates">
-        <div class="date-box">
-          <div class="label">Date limite de dépôt :</div>
+      <div class="options-right">
+        <div class="options-date-box">
+          <div class="label">Date limite de dépôt</div>
           <div class="date">27 sept 2027</div>
         </div>
-        <div class="date-box">
-          <div class="label">Rentrée :</div>
+        <div class="options-date-box">
+          <div class="label">Rentrée</div>
           <div class="date">17 Octobre 2027</div>
         </div>
       </div>
     </div>
+
   </div>
-  <a href="#" class="btn-more">Plus d'informations</a>
+
+  <div class="options-cta">
+    <a href="#" class="btn-more">Plus d'informations</a>
+  </div>
 </section>
+
+<!-- PARTENAIRES -->
+<section class="partners-section">
+  <h2 class="partners-title">Nos Partenaires</h2>
+  <div class="partners-track-wrapper">
+    <div class="partners-track" id="partnersTrack"></div>
+  </div>
+</section>
+
+<style>
+  .partners-section {
+    padding: 50px 40px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .partners-title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--blue);
+    margin-bottom: 32px;
+  }
+
+  .partners-track-wrapper {
+    overflow: hidden;
+    position: relative;
+    /* fade edges */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  .partners-track {
+    display: flex;
+    gap: 32px;
+    width: max-content;
+    animation: scrollPartners 30s linear infinite;
+  }
+
+  .partners-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollPartners {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .partner-logo {
+    height: 60px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    filter: grayscale(40%) opacity(0.8);
+    transition: filter 0.3s, transform 0.3s;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+    padding: 8px 16px;
+    box-shadow: 0 2px 12px rgba(40,58,151,0.08);
+  }
+
+  .partner-logo:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.08);
+  }
+</style>
+
+<script>
+  const sponsors = [
+    "67bc598e2ccb5df5d13ae1ae_BRED_MADAGASIKARA_BANQUE_POPULAIRE_FER_GAUCHE_LOGO_RVB.png",
+    "AccesBanque.png",
+    "Asisten-Logo-Medium-transparent.png",
+    "BASAN logo.png",
+    "Logo-30e-FTHM.png",
+    "Logo-Axian.png",
+    "Logo-PAMF.webp",
+    "LOGO-Softwell-Cop.png",
+    "Mesupres.png",
+    "MNDPT.jpg",
+    "QDATA.png",
+    "republique (1).png",
+    "Republique.png",
+    "Siooka_idzFl735uh_0.png",
+    "Yas_logo_2024.svg.png"
+  ];
+
+  const track = document.getElementById('partnersTrack');
+
+  // Double the list for seamless infinite scroll
+  [...sponsors, ...sponsors].forEach(file => {
+    const img = document.createElement('img');
+    img.src = `assets/sponsors/${file}`;
+    img.alt = file.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+    img.className = 'partner-logo';
+    track.appendChild(img);
+  });
+</script>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-logo">
-      <img src="assets/icons/logo.png" alt="ITU Logo">
+    <img src="assets/icons/logo.png" alt="ITU Logo">
   </div>
-
   <div class="footer-links">
     <a href="#">Home</a>
-    <a href="#">Map & Directions</a>
+    <a href="#">Map &amp; Directions</a>
     <a href="#">Contact Info</a>
     <a href="#">About ITU</a>
   </div>
-
-  <p class="copyright">
-    Copyright 2025-Novaria
-  </p>
+  <p class="copyright">Copyright 2025-Novaria</p>
 </footer>
 
 <script>
   // Mobile menu toggle
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav');
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
+  toggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+  const iconSun = document.getElementById('icon-sun');
+  const iconMoon = document.getElementById('icon-moon');
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      html.classList.add('dark');
+      iconSun.style.display = 'none';
+      iconMoon.style.display = 'block';
+    } else {
+      html.classList.remove('dark');
+      iconSun.style.display = 'block';
+      iconMoon.style.display = 'none';
+    }
+  }
+  applyTheme(localStorage.getItem('theme') || 'light');
+  themeToggle.addEventListener('click', () => {
+    const isDark = html.classList.contains('dark');
+    applyTheme(isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
   });
 
-  const themeToggle = document.getElementById('theme-toggle');
-const html = document.documentElement;
-const iconSun = document.getElementById('icon-sun');
-const iconMoon = document.getElementById('icon-moon');
-
-function applyTheme(theme){
-  if(theme === 'dark'){
-    html.classList.add('dark');
-    iconSun.style.display = 'none';
-    iconMoon.style.display = 'block';
-  } else {
-    html.classList.remove('dark');
-    iconSun.style.display = 'block';
-    iconMoon.style.display = 'none';
-  }
-}
-
-// Vérifier la préférence sauvegardée
-applyTheme(localStorage.getItem('theme') || 'light');
-
-themeToggle.addEventListener('click', () => {
-  if(html.classList.contains('dark')){
-    applyTheme('light');
-    localStorage.setItem('theme','light');
-  } else {
-    applyTheme('dark');
-    localStorage.setItem('theme','dark');
-  }
-});
+  // Card click highlight
+  document.querySelectorAll('.options-block').forEach(block => {
+    block.querySelectorAll('.option-card').forEach(card => {
+      card.addEventListener('click', () => {
+        block.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        card.classList.toggle('selected');
+      });
+    });
+  });
 </script>
 
 </body>
